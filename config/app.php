@@ -160,6 +160,8 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Laratrust\LaratrustServiceProvider::class,
+        Yajra\DataTables\DataTablesServiceProvider::class,
+
 
         /*
          * Package Service Providers...
@@ -223,6 +225,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Laratrust'   => Laratrust\LaratrustFacade::class,
+        'DataTables' => Yajra\DataTables\DataTables::class,
+
 
     ],
 

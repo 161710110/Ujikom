@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Merk;
 use Illuminate\Http\Request;
+use Yajra\Datatables\Html\Builder;
+use Yajra\DataTables\Datatables;
 
 class MerkController extends Controller
 {
@@ -12,9 +14,17 @@ class MerkController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function json(){
+        $data = Merk::all();
+        return Datatables::of($data)
+        ->addColumn('action',function($data){
+                return '<center><a href="#" class="btn btn-xs btn-primary edit" data-id="'.$data->id.'"><i class="glyphicon glyphicon-edit"></i> Edit</a> | <a href="#" class="btn btn-xs btn-danger delete" id="'.$data->id.'"><i class="glyphicon glyphicon-remove"></i> Delete</a></center>';
+            })
+            ->rawColumns(['action'])->make(true);
+    }
     public function index()
-    {
-        //
+    {   
+        return view('merk.index');
     }
 
     /**
@@ -35,7 +45,17 @@ class MerkController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'nama_merk'=>'required',
+            'foto'=>'required'
+        ],[
+            'nama_merk.required'=>'Nama Merk tidak boleh kosong',
+    ]);
+            $data = new Merk;
+            $data->nama_merk = $request->nama_merk;
+            $data->foto = $request->foto;
+            $data->save();
+            return response()->json(['success'=>true]);
     }
 
     /**
@@ -55,9 +75,10 @@ class MerkController extends Controller
      * @param  \App\Merk  $merk
      * @return \Illuminate\Http\Response
      */
-    public function edit(Merk $merk)
+    public function edit($id)
     {
-        //
+        $data = Merk::findOrFail($id);
+        return $data;
     }
 
     /**
@@ -67,9 +88,20 @@ class MerkController extends Controller
      * @param  \App\Merk  $merk
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Merk $merk)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'nama_merk'=>'required',
+            'foto'=>'required'
+        ],[
+            'nama_merk.required'=>'Nama Merk tidak boleh kosong',
+            'foto.required'=>'foto tidak boleh kosong'
+    ]);
+            $data = Merk::find($id);
+            $data->nama_merk = $request->nama_merk;
+            $data->foto = $request->foto;
+            $data->save();
+            return response()->json(['success'=>true]);
     }
 
     /**
@@ -78,8 +110,12 @@ class MerkController extends Controller
      * @param  \App\Merk  $merk
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Merk $merk)
+    public function destroy(Request $request)
     {
-        //
+        $data = Merk::find($request->input('id'));
+        if($data->delete())
+        {
+            echo 'Data Deleted';
+        }
     }
 }

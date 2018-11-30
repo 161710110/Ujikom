@@ -6,13 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Merk extends Model
 {
-    protected $table = 'merks';
-    protected $fillable = ['nama_merk'];
+    protected $fillable = ['nama_merk','foto'];
     public $timestamps = true;
 
     public function barang()
 	{
-	    return $this->belongsTo('App\Barang', 'merk_id');
+	    return $this->hasMany('App\Barang', 'merk_id');
 	}
 
 

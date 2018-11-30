@@ -12,7 +12,11 @@ class Artikel extends Model
 
     public function kategoriartikel()
 	{
-	    return $this->hasMany('App\KategoriArtikel', 'kategori_id');
+	    return $this->belongsTo('App\KategoriArtikel', 'kategori_id');
+	}
+	public function getRouteKeyName()
+	{
+		return 'slug';
 	}
 	
 }
