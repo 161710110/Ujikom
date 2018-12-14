@@ -19,7 +19,7 @@
 
                     <div class="form-group">
                         <label>Nomor Handphone</label>
-                        <input type="text" name="phone" id="phone" class="form-control" placeholder="089xxxxxxxxxxx" />
+                        <input type="number" name="phone" id="phone" class="form-control" placeholder="089xxxxxxxxxxx" />
                         <span class="help-block has-error phone_error"></span>
                      </div>
 

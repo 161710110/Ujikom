@@ -21,10 +21,16 @@ class ArtikelController extends Controller
         ->addColumn('kategori',function($data){
             return $data->kategoriartikel->nama_kategori;
         })
+        ->addColumn('cover', function($data){
+                if ($data->cover == NULL){
+                    return 'No Image!';
+                }
+                return '<img class="img-thumbnail" style="width :200px ; height :100px" src="'. url($data->cover) .'?'.time().'" alt="">';
+            })
         ->addColumn('action',function($data){
                 return '<center><a href="#" class="btn btn-xs btn-primary edit" data-id="'.$data->id.'"><i class="glyphicon glyphicon-edit"></i> Edit</a> | <a href="#" class="btn btn-xs btn-danger delete" id="'.$data->id.'"><i class="glyphicon glyphicon-remove"></i> Delete</a></center>';
         })
-        ->rawColumns(['action','kategori'])->make(true);
+        ->rawColumns(['action','cover','kategori'])->make(true);
     }
     public function index()
     {
@@ -55,24 +61,26 @@ class ArtikelController extends Controller
             'cover' => 'required',
             'isi' => 'required',
             'penulis' => 'required',
-            'tanggal' => 'required',
-            'slug' => 'required'
+            'tanggal' => 'required'
         ],[
             'judul.required' => 'Judul  Tidak Boleh Kosong',
             'cover.required' => 'Cover  Tidak Boleh Kosong',
             'isi.required' => 'Isi  Tidak Boleh Kosong',
             'penulis.required' => 'Penulis  Tidak Boleh Kosong',
-            'tanggal.required' => 'tanggal  Tidak Boleh Kosong',
-            'slug.required' => 'slug  Tidak Boleh Kosong'
+            'tanggal.required' => 'tanggal  Tidak Boleh Kosong'
         ]);
         $data = new Artikel;
         $data->judul = $request->judul;
-        $data->cover = $request->cover;
+        $data['cover'] = null;
+            if ($request->hasFile('cover')){
+            $data['cover'] = '/upload/'.str_slug($data['judul'], '-').'.'.$request->cover->getClientOriginalExtension();
+            $request->cover->move(public_path('/upload/'), $data['cover']);
+            }
         $data->isi = $request->isi;
         $data->penulis = $request->penulis;
         $data->tanggal = $request->tanggal;
         $data->kategori_id = $request->kategori_id;
-        $data->slug = str_slug($request->judul);
+        $data->slug = str_slug($request->get('judul'));
         $data->save();
         return response()->json(['success'=>true]);
 
@@ -84,9 +92,10 @@ class ArtikelController extends Controller
      * @param  \App\Artikel  $artikel
      * @return \Illuminate\Http\Response
      */
-    public function show(Artikel $artikel)
+    public function show($slug)
     {
-        //
+        $artikel = Artikel::where('slug', $slug)->first();
+        return view('artikel.show')->with('artikel', $artikel);
     }
 
     /**
@@ -125,10 +134,15 @@ class ArtikelController extends Controller
     ]);
             $data = Artikel::find($id);
             $data->judul = $request->judul;
-            $data->cover = $request->cover;
+            $data['cover'] = null;
+            if ($request->hasFile('cover')){
+            $data['cover'] = '/upload/'.str_slug($data['nama_merk'], '-').'.'.$request->cover->getClientOriginalExtension();
+            $request->cover->move(public_path('/upload/'), $data['cover']);
+            }
             $data->isi = $request->isi;
             $data->penulis = $request->penulis;
             $data->tanggal = $request->tanggal;
+            $data->kategori_id = $request->kategori_id;
             $data->slug = str_slug($request->judul);
             $data->save();
             return response()->json(['success'=>true]);
@@ -142,7 +156,7 @@ class ArtikelController extends Controller
      */
     public function destroy(Request $request)
     {
-        $data = KategoriArtikel::find($request->input('id'));
+        $data = Artikel::find($request->input('id'));
         if($data->delete())
         {
             echo 'Data Deleted';

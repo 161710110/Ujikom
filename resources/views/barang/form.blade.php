@@ -15,13 +15,13 @@
 
                     <div class="form-group">
                         <label>Nama Barang</label>
-                        <input type="text" name="nama_barang" id="nama_barang" class="form-control" placeholder=""/>
+                        <input type="text" name="nama_barang" id="nama_barang" class="form-control" placeholder="Barang" minlength="1" maxlength="23" />
                         <span class="help-block has-error nama_barang_error"></span>
                       </div>
 
                       <div class="form-group">
                         <label>Harga Barang</label>
-                        <input type="number" name="harga_barang" id="harga_barang" class="form-control" placeholder=""/>
+                        <input type="number" name="harga_barang" id="harga_barang" class="form-control" placeholder="" />
                         <span class="help-block has-error harga_barang_error"></span>
                       </div>
 
@@ -33,7 +33,7 @@
 
                       <div class="form-group">
                         <label>Stok</label>
-                        <input type="text" name="stock" id="stock" class="form-control" placeholder=""/>
+                        <input type="number" name="stock" id="stock" class="form-control" placeholder="" min="1" maxlength="3" />
                         <span class="help-block has-error stock_error"></span>
                       </div>
 
@@ -57,7 +57,7 @@
                       <div class="form-group">
                               <label>Kategori Barang</label>
                               <select name="kategori_id" id="kategori_id" class="single form-control" style="width: 460px">
-                                <option disabled selected>Merk</option>
+                                <option disabled selected>Kategori Barang</option>
                                 @foreach($kategori_barang as $data)
                                 <option value="{{ $data->id}}">{{ $data->nama_kategori }}</option>
                                 @endforeach

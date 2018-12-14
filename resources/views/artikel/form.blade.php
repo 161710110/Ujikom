@@ -15,25 +15,26 @@
 
                     <div class="form-group">
                         <label>Judul</label>
-                        <input type="text" name="judul" id="judul" class="form-control" placeholder=""/>
+                        <input type="text" name="judul" id="judul" class="form-control" placeholder="" minlength="1" />
                         <span class="help-block has-error judul_error"></span>
                       </div>
 
                       <div class="form-group">
-                        <label>Cover</label>
-                        <input type="text" name="cover" id="cover" class="form-control" placeholder=""/>
+                        <label for="photo">Cover</label>
+                        <input type="file" id="cover" name="cover" accept="image/*">
                         <span class="help-block has-error cover_error"></span>
                       </div>
 
                       <div class="form-group">
                         <label>Isi</label>
+                        <!-- <textarea name="isi" id="isi" class="form-control" placeholder=""></textarea> -->
                         <input type="text" name="isi" id="isi" class="form-control" placeholder=""/>
                         <span class="help-block has-error isi_error"></span>
                       </div>
 
                       <div class="form-group">
                         <label>Penulis</label>
-                        <input type="text" name="penulis" id="penulis" class="form-control" placeholder=""/>
+                        <input type="text" name="penulis" id="penulis" class="form-control" placeholder="" minlength="1" maxlength="23" />
                         <span class="help-block has-error penulis_error"></span>
                       </div>
 

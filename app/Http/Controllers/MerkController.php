@@ -17,10 +17,17 @@ class MerkController extends Controller
     public function json(){
         $data = Merk::all();
         return Datatables::of($data)
+        ->addColumn('foto', function($data){
+                if ($data->foto == NULL){
+                    return 'No Image!';
+                }
+                return '<img class="img-thumbnail" style="width :200px ; height :100px" src="'. url($data->foto) .'?'.time().'" alt="">';
+            })
+
         ->addColumn('action',function($data){
                 return '<center><a href="#" class="btn btn-xs btn-primary edit" data-id="'.$data->id.'"><i class="glyphicon glyphicon-edit"></i> Edit</a> | <a href="#" class="btn btn-xs btn-danger delete" id="'.$data->id.'"><i class="glyphicon glyphicon-remove"></i> Delete</a></center>';
             })
-            ->rawColumns(['action'])->make(true);
+            ->rawColumns(['action','foto'])->make(true);
     }
     public function index()
     {   
@@ -53,7 +60,11 @@ class MerkController extends Controller
     ]);
             $data = new Merk;
             $data->nama_merk = $request->nama_merk;
-            $data->foto = $request->foto;
+            $data['foto'] = null;
+            if ($request->hasFile('foto')){
+            $data['foto'] = '/upload/'.str_slug($data['nama_merk'], '-').'.'.$request->foto->getClientOriginalExtension();
+            $request->foto->move(public_path('/upload/'), $data['foto']);
+            }
             $data->save();
             return response()->json(['success'=>true]);
     }
@@ -99,7 +110,11 @@ class MerkController extends Controller
     ]);
             $data = Merk::find($id);
             $data->nama_merk = $request->nama_merk;
-            $data->foto = $request->foto;
+            $data['foto'] = null;
+            if ($request->hasFile('foto')){
+            $data['foto'] = '/upload/'.str_slug($data['nama_merk'], '-').'.'.$request->foto->getClientOriginalExtension();
+            $request->foto->move(public_path('/upload/'), $data['foto']);
+            }
             $data->save();
             return response()->json(['success'=>true]);
     }

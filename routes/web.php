@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return view('temp');
 });
+Route::get('/tes', function () {
+    return view('layouts.frontend');
+});
 
 
 Auth::routes();
@@ -52,6 +55,7 @@ Route::group(['prefix'=>'/','middleware'=>['auth','role:admin']], function(){
 	Route::post('add_e', 'ArtikelController@store');
 	Route::get('edite/{id}', 'ArtikelController@edit');
 	Route::post('e/edit/{id}', 'ArtikelController@update');
+	// Route::get('/read/{slug}', 'ArtikelController@show');
 
 	//Kategori Barang
 	Route::resource('kategoribarang', 'KategoriBarangController');

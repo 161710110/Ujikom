@@ -19,12 +19,12 @@ class BarangController extends Controller
     public function json(){
         $data = Barang::all();
         return DataTables::of($data)
+        ->addColumn('kategori',function($data){
+            return $data->kategori->nama_kategori;
+        })
         ->addColumn('merk',function($data){
             return $data->merk->nama_merk;
         })
-        // ->addColumn('kategori',function($data){
-        //     return $data->KategoriBarang->nama_kategori;
-        // })
         ->addColumn('action',function($data){
                 return '<center><a href="#" class="btn btn-xs btn-primary edit" data-id="'.$data->id.'"><i class="glyphicon glyphicon-edit"></i> Edit</a> | <a href="#" class="btn btn-xs btn-danger delete" id="'.$data->id.'"><i class="glyphicon glyphicon-remove"></i> Delete</a></center>';
         })
@@ -56,17 +56,19 @@ class BarangController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nama_barang' => 'required',
+            'nama_barang' => 'required|string',
             'harga_barang' => 'required',
             'deskripsi' => 'required',
-            'stock' => 'required',
+            'stock' => 'required|max:3',
             'merk_id' => 'required',
             'kategori_id' => 'required'
         ],[
             'nama_barang.required' => 'Nama Barang  Tidak Boleh Kosong',
+            'nama_barang.string' => 'Nama Barang Hanya Menggunakan Alfabet',
             'harga_barang.required' => 'Harga Barang  Tidak Boleh Kosong',
             'deskripsi.required' => 'Deskripsi  Tidak Boleh Kosong',
             'stock.required' => 'Stock Tidak Boleh Kosong',
+            'stock.max' => 'Stock maksimal 999',
             'merk_id.required' => 'Merk Barang Tidak Boleh Kosong',
             'kategori_id.required' => 'Kategori Barang Tidak Boleh Kosong'
         ]);
@@ -99,9 +101,10 @@ class BarangController extends Controller
      * @param  \App\Barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function edit(Barang $barang)
+    public function edit($id)
     {
-        //
+        $data = Barang::findOrFail($id);
+        return $data;
     }
 
     /**
@@ -111,9 +114,33 @@ class BarangController extends Controller
      * @param  \App\Barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Barang $barang)
+    public function update(Request $request,$id)
     {
-        //
+        $this->validate($request, [
+            'nama_barang' => 'required',
+            'harga_barang' => 'required',
+            'deskripsi' => 'required',
+            'stock' => 'required',
+            'merk_id' => 'required',
+            'kategori_id' => 'required'
+        ],[
+            'nama_barang.required' => 'Nama Barang  Tidak Boleh Kosong',
+            'harga_barang.required' => 'Harga Barang  Tidak Boleh Kosong',
+            'deskripsi.required' => 'Deskripsi  Tidak Boleh Kosong',
+            'stock.required' => 'Stock Tidak Boleh Kosong',
+            'merk_id.required' => 'Merk Barang Tidak Boleh Kosong',
+            'kategori_id.required' => 'Kategori Barang Tidak Boleh Kosong'
+        ]);
+        $data = Barang::find($id);
+        $data->nama_barang = $request->nama_barang;
+        $data->harga_barang = $request->harga_barang;
+        $data->deskripsi = $request->deskripsi;
+        $data->stock = $request->stock;
+        $data->merk_id = $request->merk_id;
+        $data->kategori_id = $request->kategori_id;
+        $data->slug = str_slug($request->nama_barang);
+        $data->save();
+        return response()->json(['success'=>true]);
     }
 
     /**
@@ -122,8 +149,12 @@ class BarangController extends Controller
      * @param  \App\Barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Barang $barang)
+    public function destroy(Request $request)
     {
-        //
+        $data = Barang::find($request->input('id'));
+        if($data->delete())
+        {
+            echo 'Data Deleted';
+        }
     }
 }

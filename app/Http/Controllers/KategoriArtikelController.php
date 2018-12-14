@@ -52,7 +52,7 @@ class KategoriArtikelController extends Controller
     ]);
             $data = new KategoriArtikel;
             $data->nama_kategori = $request->nama_kategori;
-            $data->slug = str_slug($request->nama_kategori);
+            $data->slug = str_slug($request->get('nama_kategori'));
             $data->save();
             return response()->json(['success'=>true]);
     }
@@ -63,9 +63,10 @@ class KategoriArtikelController extends Controller
      * @param  \App\KategoriArtikel  $kategoriArtikel
      * @return \Illuminate\Http\Response
      */
-    public function show(KategoriArtikel $kategoriArtikel)
+    public function show($slug)
     {
-        //
+        $tampilkan = KategoriArtikel::where('slug',$slug)->first();
+        return view('kategori_artikel.tampil',compact('tampilkan'));
     }
 
     /**

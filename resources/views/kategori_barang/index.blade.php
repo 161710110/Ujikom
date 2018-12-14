@@ -1,4 +1,4 @@
-@extends('template')
+@extends('temp')
 @section('content')
 <div class="content-wrapper">
     <!-- Main content -->

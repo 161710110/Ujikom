@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\FotoBarang;
+use App\Barang;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Html\Builder;
+use Yajra\DataTables\DataTables;
 
 class FotoBarangController extends Controller
 {
@@ -12,9 +15,28 @@ class FotoBarangController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function json(){
+        $data = FotoBarang::all();
+        return DataTables::of($data)
+        ->addColumn('barang',function($data){
+            return $data->barang->nama_barang;
+        })
+        ->addColumn('foto', function($data){
+                if ($data->foto == NULL){
+                    return 'No Image!';
+                }
+                return '<img class="img-thumbnail" style="width :200px ; height :100px" src="'. url($data->foto) .'?'.time().'" alt="">';
+            })
+
+        ->addColumn('action',function($data){
+                return '<center><a href="#" class="btn btn-xs btn-primary edit" data-id="'.$data->id.'"><i class="glyphicon glyphicon-edit"></i> Edit</a> | <a href="#" class="btn btn-xs btn-danger delete" id="'.$data->id.'"><i class="glyphicon glyphicon-remove"></i> Delete</a></center>';
+        })
+        ->rawColumns(['action','foto','barang'])->make(true);
+    }
     public function index()
     {
-        //
+        $barang = Barang::all();
+        return view('foto_barang.index', compact('barang'));
     }
 
     /**
@@ -35,7 +57,22 @@ class FotoBarangController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'foto' => 'required',
+            'barang_id' => 'required'
+        ],[
+            'foto.required' => 'Foto  Tidak Boleh Kosong',
+            'barang_id.required' => 'Barang  Tidak Boleh Kosong'
+        ]);
+        $data = new FotoBarang;
+        $data['foto'] = null;
+            if ($request->hasFile('foto')){
+            $data['foto'] = '/upload/'.str_slug($data['barang_id'], '-').'.'.$request->foto->getClientOriginalExtension();
+            $request->foto->move(public_path('/upload/'), $data['foto']);
+            }
+        $data->barang_id = $request->barang_id;
+        $data->save();
+        return response()->json(['success'=>true]);
     }
 
     /**
@@ -55,9 +92,10 @@ class FotoBarangController extends Controller
      * @param  \App\FotoBarang  $fotoBarang
      * @return \Illuminate\Http\Response
      */
-    public function edit(FotoBarang $fotoBarang)
+    public function edit($id)
     {
-        //
+        $data = FotoBarang::findOrFail($id);
+        return $data;
     }
 
     /**
@@ -67,9 +105,24 @@ class FotoBarangController extends Controller
      * @param  \App\FotoBarang  $fotoBarang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, FotoBarang $fotoBarang)
+    public function update(Request $request,$id)
     {
-        //
+        $this->validate($request, [
+            'foto'=>'required',
+            'barang_id'=>'required'
+        ],[
+            'foto.required'=>'Foto tidak boleh kosong',
+            'barang_id.required'=>'Barang tidak boleh kosong'
+    ]);
+            $data = FotoBarang::find($id);
+            $data['foto'] = null;
+            if ($request->hasFile('foto')){
+            $data['foto'] = '/upload/'.str_slug($data['barang_id'], '-').'.'.$request->foto->getClientOriginalExtension();
+            $request->foto->move(public_path('/upload/'), $data['foto']);
+            }
+            $data->barang_id = $request->barang_id;
+            $data->save();
+            return response()->json(['success'=>true]);
     }
 
     /**
@@ -78,8 +131,12 @@ class FotoBarangController extends Controller
      * @param  \App\FotoBarang  $fotoBarang
      * @return \Illuminate\Http\Response
      */
-    public function destroy(FotoBarang $fotoBarang)
+    public function destroy(Request $request)
     {
-        //
+        $data = FotoBarang::find($request->input('id'));
+        if($data->delete())
+        {
+            echo 'Data Deleted';
+        }
     }
 }
