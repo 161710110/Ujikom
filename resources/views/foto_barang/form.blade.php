@@ -13,12 +13,6 @@
                      <div class="form-group">
                       <input type="hidden" name="id" id="id">
 
-                    <div class="form-group">
-                        <label for="photo">Foto</label>
-                        <input type="file" id="foto" name="foto" accept="image/*">
-                        <span class="help-block has-error foto_error"></span>
-                      </div>
-
                         <div class="form-group">
                               <label>Barang</label>
                               <select name="barang_id" id="barang_id" class="single form-control">
@@ -28,6 +22,12 @@
                                 @endforeach
                               </select>
                         <span class="help-block has-error nama_kategori_error"></span>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="photo">Foto</label>
+                        <input type="file" id="foto" name="foto" accept="image/*">
+                        <span class="help-block has-error foto_error"></span>
                       </div>
 
                   <div class="modal-footer">

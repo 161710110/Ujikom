@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('temp');
+    return view('home.index');
 });
 Route::get('/tes', function () {
     return view('layouts.frontend');
@@ -80,4 +80,12 @@ Route::group(['prefix'=>'/','middleware'=>['auth','role:admin']], function(){
 	Route::post('add_g', 'BarangController@store');
 	Route::get('editg/{id}', 'BarangController@edit');
 	Route::post('g/edit/{id}', 'BarangController@update');
+});
+
+Route::get('/shop', 'FrontendController@index');
+Route::get('/cart', function () {
+    return view('home.cart');
+});
+Route::get('/hehe', function () {
+    return view('kontak.index');
 });

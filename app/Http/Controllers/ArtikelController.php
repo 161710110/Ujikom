@@ -25,7 +25,7 @@ class ArtikelController extends Controller
                 if ($data->cover == NULL){
                     return 'No Image!';
                 }
-                return '<img class="img-thumbnail" style="width :200px ; height :100px" src="'. url($data->cover) .'?'.time().'" alt="">';
+                return '<img style="width :175px ; height :150px" src="'. url($data->cover) .'?'.time().'" alt="" class="img-md rounded">';
             })
         ->addColumn('action',function($data){
                 return '<center><a href="#" class="btn btn-xs btn-primary edit" data-id="'.$data->id.'"><i class="glyphicon glyphicon-edit"></i> Edit</a> | <a href="#" class="btn btn-xs btn-danger delete" id="'.$data->id.'"><i class="glyphicon glyphicon-remove"></i> Delete</a></center>';

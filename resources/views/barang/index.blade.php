@@ -11,7 +11,7 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <table id="stud" class="table table-bordered" style="width:100%">
+              <table id="stud" class="table table-responsive table-bordered" style="width:100%">
                   <thead>
                      <tr>
                         <th>ID</th>
@@ -19,8 +19,10 @@
                         <th>Harga Barang</th>
                         <th>Deskripsi</th>
                         <th>Stok</th>
-                        <th>Merk Barang</th>
-                        <th>Kategori Barang</th>
+                        <th>Warna</th>
+                        <th>Ukuran</th>
+                        <th>Kategori</th>
+                        <th>Merk</th>
                         <th>Action</th>
                      </tr>
                   </thead>
@@ -31,6 +33,7 @@
       </div>
     </section>
   </div>
+
       @endsection
       @push('scripts')
       @include('barang.form')
@@ -46,6 +49,8 @@
             { data: 'harga_barang', name: 'harga_barang' },
             { data: 'deskripsi', name: 'deskripsi' },
             { data: 'stock', name: 'stock' },
+            { data: 'warna', name: 'warna' },
+            { data: 'ukuran', name: 'ukuran' },
             { data: 'merk', name: 'merk' },
             { data: 'kategori', name: 'kategori' },
             { data: 'action', orderable:false, searchable: false}
@@ -200,6 +205,8 @@
                 $('#harga_barang').val(data.harga_barang);
                 $('#deskripsi').val(data.deskripsi);
                 $('#stock').val(data.stock);
+                $('#warna').val(data.warna);
+                $('#ukuran').val(data.ukuran);
                 $('#merk_id').val(data.merk_id);
                 $('#kategori_id').val(data.kategori_id);
                 $('#student_id').val(edit);
@@ -211,21 +218,4 @@
          });
       </script>
       @endpush
-      <script type="text/javascript">
-        var input = document.getElementById('input-rupiah');
-        input.addEventListener('keyup',function(e)
-          {
-            var number_string = bilangan.replace(/[^,\d]/g, '').toString(),
-            split   = number_string.split(','),
-            sisa    = split[0].length % 3,
-            rupiah  = split[0].substr(0, sisa),
-            ribuan  = split[0].substr(sisa).match(/\d{1,3}/gi);
-
-            if (ribuan) {
-              separator = sisa ? '.' : '';
-              rupiah   += separator + ribuan.join('.');
-            }
-            rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
-            return prefix == undefined ? rupiah : (rupiah ? 'Rp.  ' + rupiah : '');
-          });
-      </script>
+      

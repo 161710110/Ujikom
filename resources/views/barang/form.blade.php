@@ -1,12 +1,14 @@
-<div id="supModal" class="modal fade" role="dialog" data-backdrop="static">
-         <div class="modal-dialog">
-            <div class="modal-content">
-               <form method="POST" id="sup_form" enctype="multipart/form-data">
-                {{csrf_field()}} {{ method_field('POST') }}
-                  <div class="modal-header" style="background-color: lightblue;">
-                     <button type="button" class="close" data-dismiss="modal" >&times;</button>
-                     <h4 class="modal-title" >Add Data</h4>
-                  </div>
+<div class="modal fade" id="supModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel-2" aria-hidden="true">
+   <div class="modal-dialog" role="document">
+      <div class="modal-content">
+         <form method="POST" id="sup_form" enctype="multipart/form-data">
+         {{csrf_field()}} {{ method_field('POST') }}
+         <div class="modal-header">
+            <h5 class="modal-title">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
                   <div class="modal-body">
                      
                      <span id="form_output"></span>
@@ -35,6 +37,18 @@
                         <label>Stok</label>
                         <input type="number" name="stock" id="stock" class="form-control" placeholder="" min="1" maxlength="3" />
                         <span class="help-block has-error stock_error"></span>
+                      </div>
+
+                      <div class="form-group">
+                        <label>Warna</label>
+                        <input type="text" name="warna" id="warna" class="form-control" placeholder="" min="1" maxlength="25" />
+                        <span class="help-block has-error warna_error"></span>
+                      </div>
+
+                      <div class="form-group">
+                        <label>Ukuran</label>
+                        <input type="text" name="ukuran" id="ukuran" class="form-control" placeholder="" min="1" maxlength="25" />
+                        <span class="help-block has-error ukuran_error"></span>
                       </div>
 
                      <div class="form-group">

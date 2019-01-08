@@ -21,7 +21,7 @@ class MerkController extends Controller
                 if ($data->foto == NULL){
                     return 'No Image!';
                 }
-                return '<img class="img-thumbnail" style="width :200px ; height :100px" src="'. url($data->foto) .'?'.time().'" alt="">';
+                return '<img style="width :175px ; height :150px" src="'. url($data->foto) .'?'.time().'" alt="" class="img-md rounded">';
             })
 
         ->addColumn('action',function($data){
