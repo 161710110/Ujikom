@@ -72,7 +72,7 @@
                                         <div class="content-left">
                                             <br>
                                             <h4 class="title"><a href="single-product.html">{{$data->Barang->nama_barang}}</a></h4>
-                                            ↓↓↓↓↓↓↓↓↓↓↓↓↓
+                                            
                                             <h5 class="size">Size: <span>S</span><span>M</span><span>L</span><span>XL</span></h5>
                                             <h5 class="price">Price: RP. {{number_format($data->Barang->harga_barang,2,',','.')}}</h5>
                                             <h5 class="color">Color: <span style="background-color: #ffb2b0"></span><span style="background-color: #0271bc"></span><span style="background-color: #efc87c"></span><span style="background-color: #00c183"></span></h5>

@@ -41,9 +41,11 @@
                         <div class="main-menu">
                             <nav>
                                 <ul>
-                                    <li class="active"><a class="nav-link {{ url('/') == request()->url() ? 'active' : '' }}" href="{{ url('/') }}">HOME</a>
+                                    <li class="active"><a class="{{ url('/') == request()->url() ? 'active' : '' }}" href="{{ url('/') }}">HOME</a>
                                     </li>
-                                    <li class="active"><a class="nav-link {{ url('/shop') == request()->url() ? 'active' : '' }}" href="{{ url('/shop') }}">SHOP</a></li>
+
+                                    <li><a class="{{ url('/shop') == request()->url() ? 'active' : '' }}" href="{{ url('/shop') }}">SHOP</a></li>
+                                    
                                     <li><a href="#">PAGES</a></li>
                                     <li><a href="blog.html">BLOG</a>
                                     <li><a href="contact.html">CONTACT</a></li>

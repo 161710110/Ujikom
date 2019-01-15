@@ -15,8 +15,8 @@
                   <thead>
                      <tr>
                         <th>ID</th>
-                        <th>Nama Barang</th>
                         <th>Foto</th>
+                        <th>Nama Barang</th>
                         <th>Action</th>
                      </tr>
                   </thead>
@@ -38,8 +38,8 @@
          ajax: '/f',
          columns: [
             { data: 'id', name: 'id' },
-            { data: 'barang', name: 'barang' },
             { data: 'foto', name: 'foto' },
+            { data: 'barang', name: 'barang' },
             { data: 'action', orderable:false, searchable: false}
          ],
          "lengthMenu": [[-1, 10, 5, 2], ["All", 10, 5, 2]]
@@ -188,7 +188,6 @@
               console.log(data);
                 state = "update";
                 $('#id').val(data.id);
-                $('#foto').val(data.foto);
                 $('#barang_id').val(data.barang_id);
                 $('#student_id').val(edit);
                 $('#supModal').modal('show');
