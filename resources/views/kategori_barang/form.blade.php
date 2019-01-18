@@ -13,7 +13,7 @@
                      <div class="form-group">
                       <input type="hidden" name="id" id="id">
                         <label>Nama Kategori</label>
-                        <input type="text" name="nama_kategori" id="nama_kategori" class="form-control" placeholder="Sepatu" multiple="1" maxlength="12" />
+                        <input type="text" name="nama_kategori" id="nama_kategori" class="form-control" placeholder="Sepatu" multiple="1" />
                         <span class="help-block has-error nama_kategori_error"></span>
                      </div>
 

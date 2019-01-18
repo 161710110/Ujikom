@@ -9,7 +9,7 @@
                     <div class="col mt-10 mb-10 d-none d-md-flex">
                         <!-- Header Top Left Start -->
                         <div class="header-top-left">
-                            <p>Selamat datang di Yeva Babyshop</p>
+                            <p>Welcome to Jadusona</p>
                             <p>Hotline: <a href="tel:0123456789">0123 456 789</a></p>
                         </div><!-- Header Top Left End -->
                     </div>
@@ -42,12 +42,23 @@
 
                     <div class="col mt-10 mb-10">
                         <!-- Header Shop Links Start -->
+                        @if (Route::has('login'))
                         <div class="header-top-right">
-
-                            <p><a href="#">My Account</a></p>
-                            <p><a href="login-register.html">Register</a><a href="login-register.html">Login</a></p>
-
+                            @auth
+                            <p><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                           document.getElementById('logout-form').submit()">Logout</a></p>
+                           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                           @csrf
+                        </form>
+                            @csrf
+                            @else
+                            <p><a href="{{ route('login') }}">Login / Register</a></p>
+                            @if (Route::has('register'))
+                            <!-- <a href="{{ route('register') }}">Register</a> -->
+                            @endif
+                            @endauth
                         </div><!-- Header Shop Links End -->
+                        @endif
                     </div>
 
                 </div>

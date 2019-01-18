@@ -29,4 +29,11 @@ class FrontendController extends Controller
         // dd($fotbar);
         return view('home.shop',compact('art','bar','con','fotbar','katart','katbar','cart','merk','pay'));
     }
+    public function category($slug)
+    {
+        $katbar = KategoriBarang::all();
+        $kategori = KategoriBarang::whereSlug($slug)->first();
+
+        return view('home.katbar', compact('katbar','kategori'))->with('kategori', $kategori);
+    }
 }

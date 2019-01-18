@@ -27,7 +27,7 @@
                 <div class="col-xl-9 col-lg-8 col-12 order-1 order-lg-2 mb-40">
                     <div class="row">
 
-                        <!-- <div class="col-12">
+                        <div class="col-12">
                             <div class="product-show">
                                 <h4>Show:</h4>
                                 <select class="nice-select">
@@ -48,8 +48,8 @@
                                     <option>Price Descending</option>
                                 </select>
                             </div>
-                        </div> -->
-                        @foreach($fotbar as $data) 
+                        </div>
+                        @foreach($kategori->barang()->get() as $data) 
                         <div class="col-xl-4 col-md-6 col-12 mb-40">
                            
                             <div class="product-item">
@@ -57,8 +57,9 @@
 
                                     <div class="image">
 <!--                                         <a href="{{ url('foto_barang',$data->id)}}"> -->
-                                        <img src="{{ $data->foto, $data->nama }}" height="270px" width="320px" alt="">
-                            
+                                        @foreach($data->FotoBarang as $data1)
+                                        <img src="{{ $data1->foto, $data->nama }}" height="270px" width="320px" alt="">
+                                        @endforeach
                                         <div class="image-overlay">
                                             <div class="action-buttons">
                                                 <button>tambah keranjang</button>
@@ -71,16 +72,16 @@
 
                                         <div class="content-left">
                                             <br>
-                                            <h4 class="title"><a href="single-product.html">{{$data->Barang->nama_barang}}</a></h4>
+                                            <h4 class="title"><a href="single-product.html">{{$data->nama_barang}}</a></h4>
                                             
                                             <h5 class="size">Size: <span>S</span><span>M</span><span>L</span><span>XL</span></h5>
-                                            <h5 class="price">Price: RP. {{number_format($data->Barang->harga_barang,2,',','.')}}</h5>
+                                            <h5 class="price">Price: RP. {{number_format($data->harga_barang,2,',','.')}}</h5>
                                             <h5 class="color">Color: <span style="background-color: #ffb2b0"></span><span style="background-color: #0271bc"></span><span style="background-color: #efc87c"></span><span style="background-color: #00c183"></span></h5>
 
                                         </div>
 
                                         <!-- <div class="content-right">
-                                            <span class="price">{{$data->Barang->harga_barang}}</span>
+                                            <span class="price">{{$data->harga_barang}}</span>
                                         </div> -->
 
                                     </div>
@@ -111,11 +112,11 @@
                     <div class="sidebar">
                         <h4 class="sidebar-title">Category</h4>
                          <ul class="sidebar-list">
-                            @foreach ($katbar as $data)<li><a href="{{ route('isikategori', $data->slug) }}">{{$data->nama_kategori}} <span class="num">{{ $data->count() }}</span></a></li>@endforeach
+                            @foreach ($katbar as $data)<li><a href="{{ route('isikategori', $data->slug) }}">{{$data->nama_kategori}} <span class="num">18</span></a></li>@endforeach
                         </ul>
                     </div>
 
-                    <!-- <div class="sidebar">
+                    <div class="sidebar">
                         <h4 class="sidebar-title">colors</h4>
                         <ul class="sidebar-list">
                             <li><a href="#"><span class="color" style="background-color: #000000"></span> Black</a></li>
@@ -124,9 +125,9 @@
                             <li><a href="#"><span class="color" style="background-color: #28901D"></span> Green</a></li>
                             <li><a href="#"><span class="color" style="background-color: #FF6801"></span> Orange</a></li>
                         </ul>
-                    </div> -->
+                    </div>
 
-                    <!-- <div class="sidebar">
+                    <div class="sidebar">
                         <h4 class="sidebar-title">Popular Product</h4>
                         <div class="sidebar-product-wrap">
                             <div class="sidebar-product">
@@ -172,18 +173,18 @@
                                 </div>
                             </div>
                         </div>
-                    </div> -->
+                    </div>
 
-                    <!-- <div class="sidebar">
+                    <div class="sidebar">
                         <h3 class="sidebar-title">Price</h3>
 
                         <div class="sidebar-price">
                             <div id="price-range"></div>
                             <input type="text" id="price-amount" readonly>
                         </div>
-                    </div> -->
+                    </div>
 
-                    <!-- <div class="sidebar">
+                    <div class="sidebar">
                         <h3 class="sidebar-title">Tags</h3>
                         <ul class="sidebar-tag">
                             <li><a href="#">New</a></li>
@@ -198,7 +199,7 @@
                             <li><a href="#">sit</a></li>
                             <li><a href="#">amet</a></li>
                         </ul>
-                    </div> -->
+                    </div>
 
                 </div>
 

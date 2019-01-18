@@ -89,3 +89,5 @@ Route::get('/cart', function () {
 Route::get('/hehe', function () {
     return view('kontak.index');
 });
+
+Route::get('/category/{slug}','FrontendController@category')->name('isikategori');
