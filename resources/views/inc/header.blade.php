@@ -10,13 +10,13 @@
                         <!-- Header Top Left Start -->
                         <div class="header-top-left">
                             <p>Welcome to Jadusona</p>
-                            <p>Hotline: <a href="tel:0123456789">0123 456 789</a></p>
+                            <p>Hotline: <a href="tel:085659332531">0856-5933-2531</a></p>
                         </div><!-- Header Top Left End -->
                     </div>
 
                     <div class="col mt-10 mb-10">
                         <!-- Header Language Currency Start -->
-                        <ul class="header-lan-curr">
+                        <!-- <ul class="header-lan-curr">
 
                             <li><a href="#">eng</a>
                                 <ul>
@@ -37,7 +37,8 @@
                                 </ul>
                             </li>
 
-                        </ul><!-- Header Language Currency End -->
+                        </ul> -->
+                        <!-- Header Language Currency End -->
                     </div>
 
                     <div class="col mt-10 mb-10">

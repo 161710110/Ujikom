@@ -46,7 +46,6 @@
 
                                     <li><a class="{{ url('/shop') == request()->url() ? 'active' : '' }}" href="{{ url('/shop') }}">SHOP</a></li>
                                     
-                                    <li><a href="#">PAGES</a></li>
                                     <li><a href="blog.html">BLOG</a>
                                     <li><a href="contact.html">CONTACT</a></li>
                                 </ul>

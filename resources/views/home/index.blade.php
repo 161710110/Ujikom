@@ -18,7 +18,7 @@
                 <div class="hero-content">
 
                     <h1>Get 35% off <br>Latest Baby Product</h1>
-                    <a href="#">SHOP NOW</a>
+                    <!-- <a href="#">SHOP NOW</a> -->
 
                 </div>
 
@@ -42,7 +42,7 @@
     </div><!-- Hero Section End -->
 
     <!-- Banner Section Start -->
-    <div class="banner-section section mt-40 mt-xs-20 mb-60 mb-lg-40 mb-md-40 mb-sm-40 mb-xs-20">
+        <!-- <div class="banner-section section mt-40 mt-xs-20 mb-60 mb-lg-40 mb-md-40 mb-sm-40 mb-xs-20">
         <div class="container-fluid">
             <div class="row row-10">
 
@@ -88,7 +88,8 @@
 
             </div>
         </div>
-    </div><!-- Banner Section End -->
+        </div> --> 
+    <!--  Banner Section End --> 
 
     <!-- Product Section Start -->
     <div class="product-section section mb-40 mb-lg-20 mb-md-20 mb-sm-20 mb-xs-0">
@@ -96,8 +97,8 @@
 
             <div class="row">
                 <div class="section-title text-center col mb-30">
-                    <h1>Popular Products</h1>
-                    <p>All popular product find here</p>
+                    <h1>New Products</h1>
+                    <p>All new product find here</p>
                 </div>
             </div>
 
@@ -485,7 +486,7 @@
     </div><!-- Product Section End -->
 
     <!-- Banner Section Start -->
-    <div class="banner-section section fix mb-70 mb-lg-50 mb-md-50 mb-sm-50 mb-xs-30">
+        <!-- <div class="banner-section section fix mb-70 mb-lg-50 mb-md-50 mb-sm-50 mb-xs-30">
         <div class="row row-5">
 
             <div class="col-lg-4 col-md-6 col-12 mb-10">
@@ -524,49 +525,101 @@
                 </div>
             </div>
         </div>
-    </div><!-- Banner Section End -->
+        </div> -->
+    <!-- Banner Section End -->
+
     <!-- Product Section Start -->
-    <div class="product-section section mb-40 mb-lg-20 mb-md-20 mb-sm-20 mb-xs-0">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-6 col-12 mb-40">
-                    <div class="row">
-                        <div class="section-title text-left col mb-30">
-                            <h1>Best Deal</h1>
-                            <p>Exclusive deals for you</p>
+        <!-- <div class="product-section section mb-40 mb-lg-20 mb-md-20 mb-sm-20 mb-xs-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-12 mb-40">
+                        <div class="row">
+                            <div class="section-title text-left col mb-30">
+                                <h1>Best Deal</h1>
+                                <p>Exclusive deals for you</p>
+                            </div>
+                        </div>
+                        <div class="best-deal-slider row">
+                            <div class="slide-item col">
+                                <div class="best-deal-product">
+                                    <div class="image"><img src="{{ asset('frontend/assets/images/product/best-deal-1.jpg') }}" alt=""></div>
+                                    <div class="content-top">
+                                        <div class="content-top-left">
+                                            <h4 class="title"><a href="#">2 Piece Shirt Set</a></h4>
+                                            <div class="ratting">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-half-o"></i>
+                                            </div>
+                                        </div>
+                                        <div class="content-top-right">
+                                            <span class="price">$13 <span class="old">$28</span></span>
+                                        </div>
+                                    </div>
+                                    <div class="content-bottom">
+                                        <div class="countdown" data-countdown="2019/06/20"></div>
+                                        <a href="#" data-hover="SHOP NOW">SHOP NOW</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slide-item col">
+                                <div class="best-deal-product">
+                                    <div class="image"><img src="{{ asset('frontend/assets/images/product/best-deal-2.jpg') }}" alt=""></div>
+                                    <div class="content-top">
+                                        <div class="content-top-left">
+                                            <h4 class="title"><a href="#">Kelly Shirt Set</a></h4>
+                                            <div class="ratting">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-o"></i>
+                                            </div>
+                                        </div>
+                                        <div class="content-top-right">
+                                            <span class="price">$09 <span class="old">$25</span></span>
+                                        </div>
+                                    </div>
+                                    <div class="content-bottom">
+                                        <div class="countdown" data-countdown="2019/06/20"></div>
+                                        <a href="#" data-hover="SHOP NOW">SHOP NOW</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="best-deal-slider row">
-                        <div class="slide-item col">
-                            <div class="best-deal-product">
-                                <div class="image"><img src="{{ asset('frontend/assets/images/product/best-deal-1.jpg') }}" alt=""></div>
-                                <div class="content-top">
-                                    <div class="content-top-left">
-                                        <h4 class="title"><a href="#">2 Piece Shirt Set</a></h4>
+                    <div class="col-lg-8 col-md-6 col-12 pl-50 pl-sm-15 pl-xs-15">
+                        <div class="row">
+                            <div class="section-title text-left col mb-30">
+                                <h1>On Sale Products</h1>
+                                <p>All featured product find here</p>
+                            </div>
+                        </div>
+                        <div class="small-product-slider row row-7">
+                            <div class="col mb-40">
+                                <div class="on-sale-product">
+                                    <a href="single-product.html" class="image"><img src="{{ asset('frontend/assets/images/product/on-sale-1.jpg') }}" alt=""></a>
+                                    <div class="content text-center">
+                                        <h4 class="title"><a href="single-product.html">Skily Girld Dress</a></h4>
+                                        <span class="price">$19 <span class="old">$35</span></span>
                                         <div class="ratting">
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
                                             <i class="fa fa-star-half-o"></i>
+                                            <i class="fa fa-star-o"></i>
                                         </div>
                                     </div>
-                                    <div class="content-top-right">
-                                        <span class="price">$13 <span class="old">$28</span></span>
-                                    </div>
-                                </div>
-                                <div class="content-bottom">
-                                    <div class="countdown" data-countdown="2019/06/20"></div>
-                                    <a href="#" data-hover="SHOP NOW">SHOP NOW</a>
                                 </div>
                             </div>
-                        </div>
-                        <div class="slide-item col">
-                            <div class="best-deal-product">
-                                <div class="image"><img src="{{ asset('frontend/assets/images/product/best-deal-2.jpg') }}" alt=""></div>
-                                <div class="content-top">
-                                    <div class="content-top-left">
-                                        <h4 class="title"><a href="#">Kelly Shirt Set</a></h4>
+                            <div class="col mb-40">
+                                <div class="on-sale-product">
+                                    <a href="single-product.html" class="image"><img src="{{ asset('frontend/assets/images/product/on-sale-2.jpg') }}" alt=""></a>
+                                    <div class="content text-center">
+                                        <h4 class="title"><a href="single-product.html">Kelly Shirt Set</a></h4>
+                                        <span class="price">$08 <span class="old">$25</span></span>
                                         <div class="ratting">
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
@@ -575,150 +628,101 @@
                                             <i class="fa fa-star-o"></i>
                                         </div>
                                     </div>
-                                    <div class="content-top-right">
-                                        <span class="price">$09 <span class="old">$25</span></span>
-                                    </div>
-                                </div>
-                                <div class="content-bottom">
-                                    <div class="countdown" data-countdown="2019/06/20"></div>
-                                    <a href="#" data-hover="SHOP NOW">SHOP NOW</a>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-8 col-md-6 col-12 pl-50 pl-sm-15 pl-xs-15">
-                    <div class="row">
-                        <div class="section-title text-left col mb-30">
-                            <h1>On Sale Products</h1>
-                            <p>All featured product find here</p>
-                        </div>
-                    </div>
-                    <div class="small-product-slider row row-7">
-                        <div class="col mb-40">
-                            <div class="on-sale-product">
-                                <a href="single-product.html" class="image"><img src="{{ asset('frontend/assets/images/product/on-sale-1.jpg') }}" alt=""></a>
-                                <div class="content text-center">
-                                    <h4 class="title"><a href="single-product.html">Skily Girld Dress</a></h4>
-                                    <span class="price">$19 <span class="old">$35</span></span>
-                                    <div class="ratting">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-half-o"></i>
-                                        <i class="fa fa-star-o"></i>
+                            <div class="col mb-40">
+                                <div class="on-sale-product">
+                                    <a href="single-product.html" class="image"><img src="{{ asset('frontend/assets/images/product/on-sale-3.jpg') }}" alt=""></a>
+                                    <div class="content text-center">
+                                        <h4 class="title"><a href="single-product.html">Sleeveless Tops</a></h4>
+                                        <span class="price">$05 <span class="old">$12</span></span>
+                                        <div class="ratting">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col mb-40">
-                            <div class="on-sale-product">
-                                <a href="single-product.html" class="image"><img src="{{ asset('frontend/assets/images/product/on-sale-2.jpg') }}" alt=""></a>
-                                <div class="content text-center">
-                                    <h4 class="title"><a href="single-product.html">Kelly Shirt Set</a></h4>
-                                    <span class="price">$08 <span class="old">$25</span></span>
-                                    <div class="ratting">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
+                            <div class="col mb-40">
+                                <div class="on-sale-product">
+                                    <a href="single-product.html" class="image"><img src="{{ asset('frontend/assets/images/product/on-sale-4.jpg') }}" alt=""></a>
+                                    <div class="content text-center">
+                                        <h4 class="title"><a href="single-product.html">Babysuit Bundle</a></h4>
+                                        <span class="price">$25 <span class="old">$45</span></span>
+                                        <div class="ratting">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-half-o"></i>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col mb-40">
-                            <div class="on-sale-product">
-                                <a href="single-product.html" class="image"><img src="{{ asset('frontend/assets/images/product/on-sale-3.jpg') }}" alt=""></a>
-                                <div class="content text-center">
-                                    <h4 class="title"><a href="single-product.html">Sleeveless Tops</a></h4>
-                                    <span class="price">$05 <span class="old">$12</span></span>
-                                    <div class="ratting">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
+                            <div class="col mb-40">
+                                <div class="on-sale-product">
+                                    <a href="single-product.html" class="image"><img src="{{ asset('frontend/assets/images/product/on-sale-5.jpg') }}" alt=""></a>
+                                    <div class="content text-center">
+                                        <h4 class="title"><a href="single-product.html">Xshuai Baby Frock</a></h4>
+                                        <span class="price">$13 <span class="old">$28</span></span>
+                                        <div class="ratting">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col mb-40">
-                            <div class="on-sale-product">
-                                <a href="single-product.html" class="image"><img src="{{ asset('frontend/assets/images/product/on-sale-4.jpg') }}" alt=""></a>
-                                <div class="content text-center">
-                                    <h4 class="title"><a href="single-product.html">Babysuit Bundle</a></h4>
-                                    <span class="price">$25 <span class="old">$45</span></span>
-                                    <div class="ratting">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-half-o"></i>
+                            <div class="col mb-40">
+                                <div class="on-sale-product">
+                                    <a href="single-product.html" class="image"><img src="{{ asset('frontend/assets/images/product/on-sale-6.jpg') }}" alt=""></a>
+                                    <div class="content text-center">
+                                        <h4 class="title"><a href="single-product.html">Stylish Hat</a></h4>
+                                        <span class="price">$03 <span class="old">$10</span></span>
+                                        <div class="ratting">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-half-o"></i>
+                                            <i class="fa fa-star-o"></i>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col mb-40">
-                            <div class="on-sale-product">
-                                <a href="single-product.html" class="image"><img src="{{ asset('frontend/assets/images/product/on-sale-5.jpg') }}" alt=""></a>
-                                <div class="content text-center">
-                                    <h4 class="title"><a href="single-product.html">Xshuai Baby Frock</a></h4>
-                                    <span class="price">$13 <span class="old">$28</span></span>
-                                    <div class="ratting">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
+                            <div class="col mb-40">
+                                <div class="on-sale-product">
+                                    <a href="single-product.html" class="image"><img src="{{ asset('frontend/assets/images/product/on-sale-7.jpg') }}" alt=""></a>
+                                    <div class="content text-center">
+                                        <h4 class="title"><a href="single-product.html">Aolvo Kids Munch</a></h4>
+                                        <span class="price">$25 <span class="old">$35</span></span>
+                                        <div class="ratting">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-half-o"></i>
+                                            <i class="fa fa-star-o"></i>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col mb-40">
-                            <div class="on-sale-product">
-                                <a href="single-product.html" class="image"><img src="{{ asset('frontend/assets/images/product/on-sale-6.jpg') }}" alt=""></a>
-                                <div class="content text-center">
-                                    <h4 class="title"><a href="single-product.html">Stylish Hat</a></h4>
-                                    <span class="price">$03 <span class="old">$10</span></span>
-                                    <div class="ratting">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-half-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col mb-40">
-                            <div class="on-sale-product">
-                                <a href="single-product.html" class="image"><img src="{{ asset('frontend/assets/images/product/on-sale-7.jpg') }}" alt=""></a>
-                                <div class="content text-center">
-                                    <h4 class="title"><a href="single-product.html">Aolvo Kids Munch</a></h4>
-                                    <span class="price">$25 <span class="old">$35</span></span>
-                                    <div class="ratting">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-half-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col mb-40">
-                            <div class="on-sale-product">
-                                <a href="single-product.html" class="image"><img src="{{ asset('frontend/assets/images/product/on-sale-8.jpg') }}" alt=""></a>
-                                <div class="content text-center">
-                                    <h4 class="title"><a href="single-product.html">Tmart Baby Dress</a></h4>
-                                    <span class="price">$48 <span class="old">$65</span></span>
-                                    <div class="ratting">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-half-o"></i>
+                            <div class="col mb-40">
+                                <div class="on-sale-product">
+                                    <a href="single-product.html" class="image"><img src="{{ asset('frontend/assets/images/product/on-sale-8.jpg') }}" alt=""></a>
+                                    <div class="content text-center">
+                                        <h4 class="title"><a href="single-product.html">Tmart Baby Dress</a></h4>
+                                        <span class="price">$48 <span class="old">$65</span></span>
+                                        <div class="ratting">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-half-o"></i>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -726,8 +730,9 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div><!-- Product Section End -->
+        </div> -->
+    <!-- Product Section End -->
+
     <!-- Feature Section Start -->
     <div class="feature-section section bg-theme-two pt-65 pt-lg-55 pt-md-45 pt-sm-45 pt-xs-25 pb-65 pb-lg-55 pb-md-45 pb-sm-45 pb-xs-25 fix" style="background-image: url(frontend/assets/images/pattern/pattern-dot.png') }}");">
         <div class="container">
@@ -771,7 +776,7 @@
     <div class="blog-section section mt-80 mt-lg-60 mt-md-60 mt-sm-60 mt-xs-40 mb-40 mb-lg-20 mb-md-20 mb-sm-20 mb-xs-0">
         <div class="container">
             <div class="row">
-                <div class="col-xl-6 col-lg-5 col-12">
+                <!-- <div class="col-xl-6 col-lg-5 col-12">
                     <div class="row">
                         <div class="section-title text-left col mb-30">
                             <h1>CLIENTS REVIEW</h1>
@@ -805,7 +810,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="col-xl-6 col-lg-7 col-12">
                     <div class="row">
                         <div class="section-title text-left col mb-30">

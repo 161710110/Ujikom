@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class KategoriBarang extends Model
 {
-    protected $fillable = ['nama_kategori','slug'];
+	protected $table = 'kategori_barangs';
+    protected $fillable = ['id','nama_kategori','slug'];
     public $timestamps = true;
 
     public function barang()

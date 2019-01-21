@@ -36,4 +36,14 @@ class FrontendController extends Controller
 
         return view('home.katbar', compact('katbar','kategori'))->with('kategori', $kategori);
     }
+
+    public function listproduct(KategoriBarang $kategoribarang)
+    {
+        $fotbar = $kategoribarang->Barang()->latest()->paginate(9);
+        $katbar = KategoriBarang::all();
+        $merk = Merk::all();
+        $fotobarang = FotoBarang::all();
+
+        return view('home.shop', compact('barang','katbar','merk','fotbar'));
+    }
 }

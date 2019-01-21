@@ -73,9 +73,9 @@
                                             <br>
                                             <h4 class="title"><a href="single-product.html">{{$data->Barang->nama_barang}}</a></h4>
                                             
-                                            <h5 class="size">Size: <span>S</span><span>M</span><span>L</span><span>XL</span></h5>
-                                            <h5 class="price">Price: RP. {{number_format($data->Barang->harga_barang,2,',','.')}}</h5>
-                                            <h5 class="color">Color: <span style="background-color: #ffb2b0"></span><span style="background-color: #0271bc"></span><span style="background-color: #efc87c"></span><span style="background-color: #00c183"></span></h5>
+                                            <h5 class="size">Ukuran: <span>S</span><span>M</span><span>L</span><span>XL</span></h5>
+                                            <h5 class="price">Harga: RP. {{number_format($data->Barang->harga_barang,2,',','.')}}</h5>
+                                            <h5 class="color">Warna: <span style="background-color: #ffb2b0"></span><span style="background-color: #0271bc"></span><span style="background-color: #efc87c"></span><span style="background-color: #00c183"></span></h5>
 
                                         </div>
 
@@ -109,9 +109,10 @@
                 <div class="col-xl-3 col-lg-4 col-12 order-2 order-lg-1 mb-40">
 
                     <div class="sidebar">
-                        <h4 class="sidebar-title">Category</h4>
+                        <h4 class="sidebar-title">Kategori</h4>
                          <ul class="sidebar-list">
-                            @foreach ($katbar as $data)<li><a href="{{ route('isikategori', $data->slug) }}">{{$data->nama_kategori}} <span class="num">{{ $data->count() }}</span></a></li>@endforeach
+                            @foreach ($katbar as $data)<li><a href="/kategori/{{ $data->slug }}">{{$data->nama_kategori}} <span class="num">{{ $data->Barang->count() }}</span></a></li>
+                            @endforeach
                         </ul>
                     </div>
 

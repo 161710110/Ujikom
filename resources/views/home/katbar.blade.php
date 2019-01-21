@@ -60,6 +60,7 @@
                                         @foreach($data->FotoBarang as $data1)
                                         <img src="{{ $data1->foto, $data->nama }}" height="270px" width="320px" alt="">
                                         @endforeach
+                                        
                                         <div class="image-overlay">
                                             <div class="action-buttons">
                                                 <button>tambah keranjang</button>
@@ -112,11 +113,11 @@
                     <div class="sidebar">
                         <h4 class="sidebar-title">Category</h4>
                          <ul class="sidebar-list">
-                            @foreach ($katbar as $data)<li><a href="{{ route('isikategori', $data->slug) }}">{{$data->nama_kategori}} <span class="num">18</span></a></li>@endforeach
+                            @foreach ($katbar as $data)<li><a href="{{ route('isikategori', $data->slug) }}">{{$data->nama_kategori}} <span class="num">{{ $data->Barang->count() }}</span></a></li>@endforeach
                         </ul>
                     </div>
 
-                    <div class="sidebar">
+                    <!-- <div class="sidebar">
                         <h4 class="sidebar-title">colors</h4>
                         <ul class="sidebar-list">
                             <li><a href="#"><span class="color" style="background-color: #000000"></span> Black</a></li>
@@ -125,9 +126,9 @@
                             <li><a href="#"><span class="color" style="background-color: #28901D"></span> Green</a></li>
                             <li><a href="#"><span class="color" style="background-color: #FF6801"></span> Orange</a></li>
                         </ul>
-                    </div>
+                    </div> -->
 
-                    <div class="sidebar">
+                    <!-- <div class="sidebar">
                         <h4 class="sidebar-title">Popular Product</h4>
                         <div class="sidebar-product-wrap">
                             <div class="sidebar-product">
@@ -173,18 +174,18 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
-                    <div class="sidebar">
+                    <!-- <div class="sidebar">
                         <h3 class="sidebar-title">Price</h3>
 
                         <div class="sidebar-price">
                             <div id="price-range"></div>
                             <input type="text" id="price-amount" readonly>
                         </div>
-                    </div>
+                    </div> -->
 
-                    <div class="sidebar">
+                    <!-- <div class="sidebar">
                         <h3 class="sidebar-title">Tags</h3>
                         <ul class="sidebar-tag">
                             <li><a href="#">New</a></li>
@@ -199,7 +200,7 @@
                             <li><a href="#">sit</a></li>
                             <li><a href="#">amet</a></li>
                         </ul>
-                    </div>
+                    </div> -->
 
                 </div>
 
