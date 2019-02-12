@@ -25,10 +25,13 @@ class BarangController extends Controller
         ->addColumn('merk',function($data){
             return $data->merk->nama_merk;
         })
+         ->addColumn('slug',function($data){
+                return '<center><a href="/show/'.$data->slug.'"> Show</a>';
+        })
         ->addColumn('action',function($data){
                 return '<center><a href="#" class="btn btn-xs btn-primary edit" data-id="'.$data->id.'"><i class="glyphicon glyphicon-edit"></i> Edit</a> | <a href="#" class="btn btn-xs btn-danger delete" id="'.$data->id.'"><i class="glyphicon glyphicon-remove"></i> Delete</a></center>';
         })
-        ->rawColumns(['action','merk','kategori'])->make(true);
+        ->rawColumns(['action','merk','kategori','slug'])->make(true);
     }
     public function index()
     {

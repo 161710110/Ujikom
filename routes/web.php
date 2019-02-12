@@ -82,12 +82,95 @@ Route::group(['prefix'=>'/','middleware'=>['auth','role:admin']], function(){
 	Route::post('g/edit/{id}', 'BarangController@update');
 });
 
+// Route::get('/', 'FrontendController@index');
 Route::get('/shop', 'FrontendController@index');
-Route::get('/cart', function () {
-    return view('home.cart');
-});
+
+
+Route::get('/contact', 'ContactController@kontak');
+Route::get('/show/{slug}','FrontendController@show1');
+Route::get('/kategori/{slug}','FrontendController@category')->name('isikategori');
+// Route::get('/', 'FrontendController@sortby');
+
 Route::get('/hehe', function () {
     return view('kontak.index');
 });
 
-Route::get('/kategori/{slug}','FrontendController@category')->name('isikategori');
+//Artikel
+Route::get('/blog', 'FrontendController@blog');
+Route::get('/view-blog/{slug}','FrontendController@view1');
+Route::get('/kategori-blog/{slug}','FrontendController@catblog')->name('isikategori');
+
+//cart
+Route::get('/cart','FrontendController@cart');
+Route::group(['middleware'=>'auth'],function(){
+    Route::get('/add-cart/{barang_id}', function($barang_id){
+        // $produk = \App\Product::find($product_id);
+        $exist = \App\Keranjang::where('user_id', \Auth::user()->id)->where('barang_id',$barang_id)->first();
+        if($exist){
+            $exist->jumlah = $exist->jumlah + 1;
+            $exist->save(); 
+        }else{    
+            $data = new \App\Keranjang;
+            $data->barang_id = $barang_id;
+            $data->jumlah = 1;
+            $data->user_id = \Auth::user()->id;
+            $data->save();
+       
+        }
+        return redirect()->back();
+    });    
+    Route::get('cart/{user_id}', function ($user_id) {
+        $mycart = \App\Keranjang::all();
+        $contact = \App\Contact::all();
+        return view('home.cart', compact('mycart','contact'));
+    });
+    Route::get('cart/delete/{id}', function ($id) {
+        $cart = \App\Keranjang::find($id)->delete();
+        return redirect()->back();
+    });
+    Route::post('cart/edit/{user_id}', function ( \Illuminate\Http\Request $request, $user_id) {
+        for($i = 0; $i < count($request->id); $i++){
+            $cart = \App\Keranjang::find($request->id[$i]);
+            $cart->jumlah = $request->jumlah[$i];
+            $cart->save();
+        }
+        return redirect()->back();
+    });
+    Route::get('check/{user_id}', function($user_id){
+    	$cart = \App\Keranjang::all();
+    	$mycart = \App\Keranjang::all();
+    	$produk = \App\Barang::orderBy('created_at','desc')->paginate(5);
+    	return view('Frontend.checkout',compact('cart','produk','mycart'));
+    });
+    Route::post('checkout/{user_id}',function( \Illuminate\Http\Request $request, $user_id){
+        $request->validate([
+        	'nama' => 'required|',
+        	'nama_lengkap' => 'required|',
+        	'email' => 'required|',
+        	'no_tlp' => 'required|',
+        	'alamat' => 'required|',
+            'kota_kab' => 'required|',
+            'prov' => 'required|',
+            'kode_pos' => 'required|',
+            'catatan' => 'required|',
+            'bukti_transfer' => 'required|',
+            'barang_id' => 'required|',
+        ]);
+        // dd(json_decode($request->chart));
+        foreach(json_decode($request->chart) as $data){
+            $transaksi = new \App\Transaksi;
+            $transaksi->nama = $request->nama;
+            $transaksi->nama_lengkap = $request->nama_lengkap;
+            $transaksi->email = $request->email;
+            $transaksi->no_tlp = $request->no_tlp;
+            $transaksi->pengiriman = $request->pengiriman;
+            $transaksi->jumlah_brg = $data->jumlah_brg;
+            $transaksi->pembayaran = $request->pembayaran;
+            $transaksi->product_id = $data->product_id;
+            $transaksi->user_id = \Auth::user()->id;
+            $transaksi->save();
+        }
+        $del = \App\Keranjang::where('user_id', $user_id)->delete();
+        return redirect()->back();
+    });
+});

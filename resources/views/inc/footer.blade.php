@@ -5,8 +5,10 @@
                 <div class="footer-widget col-lg-3 col-md-6 col-12 mb-40">
                     <h4 class="title">CONTACT US</h4>
                     <p>You address will be here<br/> Lorem Ipsum text</p>
-                    <p><a href="tel:01234567890">01234 567 890</a><a href="tel:01234567891">01234 567 891</a></p>
-                    <p><a href="mailto:info@example.com">info@example.com</a><a href="#">www.example.com</a></p>
+                    <p><a href="yeva_babykid">Instagram</a>
+                        <a href="shopee@aqilayeva">Shopee</a></p>
+                    <p><a href="mailto:gmail.com,?subject=subject&cc=cc,aqilayeva@gmail.com">aqilayeva@gmail.com</a>
+                        <a href="www.Tokopedia.com/yeva babykids">Tokopedia</a></p>
                 </div>
 
                 <div class="footer-widget col-lg-3 col-md-6 col-12 mb-40">

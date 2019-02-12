@@ -27,8 +27,7 @@
 
                       <div class="form-group">
                         <label>Isi</label>
-                        <!-- <textarea name="isi" id="isi" class="form-control" placeholder=""></textarea> -->
-                        <input type="text" name="isi" id="isi" class="form-control" placeholder=""/>
+                        <textarea name="isi" id="isi" class="form-control" placeholder=""></textarea>
                         <span class="help-block has-error isi_error"></span>
                       </div>
 

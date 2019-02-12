@@ -31,7 +31,7 @@
                             </div>
 
                             <div class="header-mini-cart">
-                                <a href="cart.html"><img src="{{ asset('frontend/assets/images/icons/cart.png') }}" alt="Cart"> <span>0</span></a>
+                                <a href="{{ url('/cart') }}"><img src="{{ asset('frontend/assets/images/icons/cart.png') }}" alt="Cart"> <span>0</span></a>
                             </div>
 
                         </div><!-- Header Advance Search End -->
@@ -41,13 +41,10 @@
                         <div class="main-menu">
                             <nav>
                                 <ul>
-                                    <li class="active"><a class="{{ url('/') == request()->url() ? 'active' : '' }}" href="{{ url('/') }}">HOME</a>
-                                    </li>
-
-                                    <li><a class="{{ url('/shop') == request()->url() ? 'active' : '' }}" href="{{ url('/shop') }}">SHOP</a></li>
-                                    
-                                    <li><a href="blog.html">BLOG</a>
-                                    <li><a href="contact.html">CONTACT</a></li>
+                                    <li><a href="{{ url('/') }}">HOME</a></li>
+                                    <li><a href="{{ url('/shop') }}">BELANJA</a></li>
+                                    <li><a href="{{ url('/blog') }}">ARTIKEL</a>
+                                    <li><a href="{{ url('/contact') }}">KONTAK</a></li>
                                 </ul>
                             </nav>
                         </div>

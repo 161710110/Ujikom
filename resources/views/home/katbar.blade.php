@@ -3,7 +3,7 @@
 <div class="main-wrapper">
 
     <!-- Page Banner Section Start -->
-    <div class="page-banner-section section" style="background-image: url(frontend/assets/images/hero/hero-1.jpg)">
+    <div class="page-banner-section section" style="background-image: url(http://demo.devitems.com/jadusona-v2/assets/images/hero/hero-1.jpg)">
         <div class="container">
             <div class="row">
                 <div class="page-banner-content col">

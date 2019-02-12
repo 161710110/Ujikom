@@ -12,7 +12,7 @@
         <div class="hero-slider hero-slider-one fix">
 
             <!-- Hero Item Start -->
-            <div class="hero-item" style="background-image: url(frontend/assets/images/hero/hero-1.jpg)">
+            <div class="hero-item" style="background-image: url(http://demo.devitems.com/jadusona-v2/assets/images/hero/hero-1.jpg)">
 
                 <!-- Hero Content -->
                 <div class="hero-content">

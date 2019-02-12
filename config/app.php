@@ -161,6 +161,8 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Laratrust\LaratrustServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
+        Jenssegers\Date\DateServiceProvider::class,
+
 
 
         /*
@@ -226,6 +228,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Laratrust'   => Laratrust\LaratrustFacade::class,
         'DataTables' => Yajra\DataTables\DataTables::class,
+        'Date' => Jenssegers\Date\Date::class,
 
 
     ],

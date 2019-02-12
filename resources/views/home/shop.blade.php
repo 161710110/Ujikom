@@ -3,15 +3,15 @@
 <div class="main-wrapper">
 
     <!-- Page Banner Section Start -->
-    <div class="page-banner-section section" style="background-image: url(frontend/assets/images/hero/hero-1.jpg)">
+    <div class="page-banner-section section" style="background-image: url(http://demo.devitems.com/jadusona-v2/assets/images/hero/hero-1.jpg)">
         <div class="container">
             <div class="row">
                 <div class="page-banner-content col">
 
-                    <h1>Shop</h1>
+                    <h1>Toko</h1>
                     <ul class="page-breadcrumb">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="shop-left-sidebar.html">Shop</a></li>
+                        <li><a href="{{ url('/') }}">Beranda</a></li>
+                        <li><a href="{{ url('/shop') }}">Toko</a></li>
                     </ul>
 
                 </div>
@@ -27,7 +27,7 @@
                 <div class="col-xl-9 col-lg-8 col-12 order-1 order-lg-2 mb-40">
                     <div class="row">
 
-                        <!-- <div class="col-12">
+                        <div class="col-12">
                             <div class="product-show">
                                 <h4>Show:</h4>
                                 <select class="nice-select">
@@ -37,7 +37,7 @@
                                     <option>20</option>
                                 </select>
                             </div>
-                            <div class="product-short">
+                            <!-- <div class="product-short">
                                 <h4>Short by:</h4>
                                 <select class="nice-select">
                                     <option>Name Ascending</option>
@@ -47,8 +47,8 @@
                                     <option>Price Ascending</option>
                                     <option>Price Descending</option>
                                 </select>
-                            </div>
-                        </div> -->
+                            </div> -->
+                        </div>
                         @foreach($fotbar as $data) 
                         <div class="col-xl-4 col-md-6 col-12 mb-40">
                            
@@ -61,7 +61,7 @@
                             
                                         <div class="image-overlay">
                                             <div class="action-buttons">
-                                                <button>tambah keranjang</button>
+                                                <button><a href="{{ url('add-cart',$data->Barang->id) }}">Tambah Keranjang</a></button>
                                             </div>
                                         </div>
                                        
@@ -71,7 +71,7 @@
 
                                         <div class="content-left">
                                             <br>
-                                            <h4 class="title"><a href="single-product.html">{{$data->Barang->nama_barang}}</a></h4>
+                                            <h4 class="title"><a href="show/{{$data->Barang->slug}}">{{$data->Barang->nama_barang}}</a></h4>
                                             
                                             <h5 class="size">Ukuran: <span>S</span><span>M</span><span>L</span><span>XL</span></h5>
                                             <h5 class="price">Harga: RP. {{number_format($data->Barang->harga_barang,2,',','.')}}</h5>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Keranjang;
+use App\user;
+use App\Barang;
 use Illuminate\Http\Request;
 
 class KeranjangController extends Controller
@@ -14,7 +16,8 @@ class KeranjangController extends Controller
      */
     public function index()
     {
-        //
+        $cart = Keranjang::all();
+        return view('cart.index',compact('cart'));
     }
 
     /**

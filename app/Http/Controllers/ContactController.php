@@ -29,6 +29,18 @@ class ContactController extends Controller
         return view('kontak.index');
     }
 
+    public function kontak()
+    {
+        $kontak = Contact::all();
+        return view('home.kontak', compact('kontak'));
+    }
+
+    public function head()
+    {
+        $kontak = Contact::all();
+        return view('inc.header', compact('kontak'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

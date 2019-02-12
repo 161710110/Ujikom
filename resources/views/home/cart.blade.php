@@ -1,9 +1,7 @@
 @extends('layouts.frontend')
 @section('content')
-<div class="main-wrapper">
-
-    <!-- Page Banner Section Start -->
-    <div class="page-banner-section section" style="background-image: url(frontend/assets/images/hero/hero-1.jpg)">
+<!-- Page Banner Section Start -->
+    <div class="page-banner-section section" style="background-image: url(assets/images/hero/hero-1.jpg)">
         <div class="container">
             <div class="row">
                 <div class="page-banner-content col">
@@ -23,7 +21,8 @@
     <div class="page-section section mt-80 mt-lg-60 mt-md-60 mt-sm-60 mt-xs-40 mb-40 mb-lg-20 mb-md-20 mb-sm-20 mb-xs-0">
         <div class="container">
 
-            <form action="#">				
+            <form action="{{url('cart/edit/'.Auth::user()->id)}}" method="post" enctype="multipart/form-data">  
+            {{csrf_field()}}             
                 <div class="row">
                     <div class="col-12">
                         <div class="cart-table table-responsive mb-40">
@@ -37,25 +36,31 @@
                                         <th class="pro-subtotal">Total</th>
                                         <th class="pro-remove">Remove</th>
                                     </tr>
+                                         @php
+                                            $total_all = 0;
+                                            $mycart = \App\Keranjang::where('user_id', \Auth::user()->id)->get();
+                                          @endphp
+
+                                          @foreach($mycart as $data)
+                                          @php 
+                                            $t_s = $data->jumlah * $data->Barang->harga;
+                                            $total_all = $total_all + $t_s;
+                                          @endphp
+
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td class="pro-thumbnail"><a href="#"><img src="frontend/assets/images/product/product-1.jpg" alt="" /></a></td>
-                                        <td class="pro-title"><a href="#">Tmart Baby Dress</a></td>
-                                        <td class="pro-price"><span class="amount">$25</span></td>
-                                        <td class="pro-quantity"><div class="pro-qty"><input type="text" value="1"></div></td>
-                                        <td class="pro-subtotal">$25</td>
-                                        <td class="pro-remove"><a href="#">×</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="pro-thumbnail"><a href="#"><img src="frontend/assets/images/product/product-2.jpg" alt="" /></a></td>
-                                        <td class="pro-title"><a href="#">Jumpsuit Outfits</a></td>
-                                        <td class="pro-price"><span class="amount">$09</span></td>
-                                        <td class="pro-quantity"><div class="pro-qty"><input type="text" value="1"></div></td>
-                                        <td class="pro-subtotal">$09</td>
+                                        @foreach ($data->Barang->FotoBarang as $data1)
+                                        <td class="pro-thumbnail"><a href="#"><img src="{{ asset('upload/'.$data1->foto) }}" alt="" /></a></td>
+                                        @endforeach
+                                        <td class="pro-title"><a href="#">{{$data->Barang->nama_barang}}</a></td>
+                                        <td class="pro-price"><span class="amount">Rp.{{ number_format($data->Barang->harga_barang,2,',','.')}}</span></td>
+                                        <td class="pro-quantity"><div class="pro-qty"><input type="text" value="{{$data->jumlah}}"></div></td>
+                                        <td class="pro-subtotal">Rp.{{number_format($data->jumlah * $data->Barang->harga_barang,2,',','.')}}</td>
                                         <td class="pro-remove"><a href="#">×</a></td>
                                     </tr>
                                 </tbody>
+                                 @endforeach
                             </table>
                         </div>
                     </div>
@@ -87,7 +92,7 @@
                                         <td>
                                             <strong><span class="amount">$306.00</span></strong>
                                         </td>
-                                    </tr>											
+                                    </tr>                                           
                                 </tbody>
                             </table>
                             <div class="proceed-to-checkout section mt-30">
@@ -108,35 +113,32 @@
                 <div class="brand-slider">
 
                     <div class="brand-item col">
-                        <img src="frontend/assets/images/brands/brand-1.png" alt="">
+                        <img src="assets/images/brands/brand-1.png" alt="">
                     </div>
 
                     <div class="brand-item col">
-                        <img src="frontend/assets/images/brands/brand-2.png" alt="">
+                        <img src="assets/images/brands/brand-2.png" alt="">
                     </div>
 
                     <div class="brand-item col">
-                        <img src="frontend/assets/images/brands/brand-3.png" alt="">
+                        <img src="assets/images/brands/brand-3.png" alt="">
                     </div>
 
                     <div class="brand-item col">
-                        <img src="frontend/assets/images/brands/brand-4.png" alt="">
+                        <img src="assets/images/brands/brand-4.png" alt="">
                     </div>
 
                     <div class="brand-item col">
-                        <img src="frontend/assets/images/brands/brand-5.png" alt="">
+                        <img src="assets/images/brands/brand-5.png" alt="">
                     </div>
 
                     <div class="brand-item col">
-                        <img src="frontend/assets/images/brands/brand-6.png" alt="">
+                        <img src="assets/images/brands/brand-6.png" alt="">
                     </div>
 
                 </div>
             </div>
         </div>
-    </div>
-</body>
-
-</html>
+    </div><!-- Brand Section End -->
 @endsection
 @push('scripts')

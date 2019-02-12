@@ -63,6 +63,6 @@ class HomeController extends Controller
         $cart = Keranjang::all();
         $merk = Merk::all();
         $pay = Pembayaran::all();
-        return view('barang.index',compact('art','bar','con','fotbar','katart','kategori_barang','cart','merk','pay'));
+        return view('layouts.frontend',compact('art','bar','con','fotbar','katart','kategori_barang','cart','merk','pay'));
     }
 }

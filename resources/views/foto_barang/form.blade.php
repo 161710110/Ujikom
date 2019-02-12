@@ -14,7 +14,8 @@
                <input type="hidden" name="id" id="id">
             <div class="form-group">
                         <label for="photo">Foto</label>
-                        <input type="file" id="foto" name="foto" accept="image/*">
+                        <input type="file" id="foto" name="foto[]" class="validate" accept="image/*" multiple>
+
                         <span class="help-block has-error Photo_error"></span>
                      </div>
 

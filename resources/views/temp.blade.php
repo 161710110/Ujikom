@@ -20,6 +20,8 @@
     @yield('content')
     @include('partials.footer')
 
+  <script src="{{ asset('tinymce/tinymce.min.js') }}"></script>
+  <script src="{{ asset('tinymce/jquery.tinymce.min.js') }}"></script>
   <script src="{{ asset('serein/vendors/js/vendor.bundle.base.js') }}"></script>
   <script src="{{ asset('serein/vendors/js/vendor.bundle.addons.js') }}"></script>
   <script src="{{ asset('serein/js/off-canvas.js') }}"></script>
@@ -37,6 +39,22 @@
   <script src="{{ asset('serein/js/alerts.js') }}"></script>
   <script src="{{ asset('serein/js/avgrund.js') }}"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+  <script type="text/javascript" >
+    $('#modalOne').on('hide.bs.modal', function () {
+    tinyMCE.editors=[];
+    });
+    tinymce.init({
+        selector: "textarea",
+        width:      '100%',
+        height:     270,
+        plugins:    [ "anchor link" ,"advlist autolink lists link image charmap print preview anchor","searchreplace visualblocks code fullscreen","insertdatetime media table contextmenu paste"],
+        statusbar:  false,
+        menubar:    false,
+        toolbar:    "link anchor | alignleft aligncenter alignright alignjustify | insertfile undo redo | styleselect | bold italic | bullist numlist outdent indent | link image",
+        image_advtab : true,
+        rel_list:   [ { title: 'Lightbox', value: 'lightbox' } ]
+    }); 
+  </script>
    
    @stack('scripts')
   

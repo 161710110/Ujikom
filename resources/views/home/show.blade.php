@@ -1,5 +1,25 @@
-@extends('template')
+@extends('layouts.frontend')
 @section('content')
+<div class="main-wrapper">
+
+<!-- Page Banner Section Start -->
+    <div class="page-banner-section section" style="background-image: url(assets/images/hero/hero-1.jpg)">
+        <div class="container">
+            <div class="row">
+                <div class="page-banner-content col">
+
+                    <h1>{{$bar->nama_barang}}</h1>
+                    <ul class="page-breadcrumb">
+                        <li><a href="{{ url('/shop') }}">Barang</a></li>
+                        <li>{{$bar->nama_barang}}</li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div><!-- Page Banner Section End -->
+
+    <!-- Page Section Start -->
     <div class="page-section section mt-80 mt-lg-60 mt-md-60 mt-sm-60 mt-xs-40 mb-80 mb-lg-60 mb-md-60 mb-sm-60 mb-xs-40">
         <div class="container">
             <div class="row row-30">
@@ -8,20 +28,22 @@
                     <div class="row row-20 mb-20 mb-xs-0">
 
                         <div class="col-lg-6 col-12 mb-40">
-                            @foreach($fotbar as $data)
+                            @foreach ($bar->FotoBarang as $data)
+                            @if ($loop->first)
                             <div class="pro-large-img mb-10 fix easyzoom easyzoom--overlay easyzoom--with-thumbnails">
-                                <a href="{{ $data->foto, $data->nama }}">
-                                    <img src="{{ $data->foto, $data->nama }}" alt=""/>
-                                </a>
+                                <a href="{{ $data->foto }}">
+                                    <img src="{{ asset('/upload/'.$data->foto) }}" alt=""/>
+                                </a> 
                             </div>
+                            @endif
                             @endforeach
                             <!-- Single Product Thumbnail Slider -->
-                            <ul id="pro-thumb-img" class="pro-thumb-img">
-                                <li><a href="assets/images/product/product-zoom-1.jpg" data-standard="assets/images/product/product-big-1.jpg"><img src="assets/images/product/product-1.jpg" alt="" /></a></li>
-                                <li><a href="assets/images/product/product-zoom-2.jpg" data-standard="assets/images/product/product-big-2.jpg"><img src="assets/images/product/product-2.jpg" alt="" /></a></li>
-                                <li><a href="assets/images/product/product-zoom-3.jpg" data-standard="assets/images/product/product-big-3.jpg"><img src="assets/images/product/product-3.jpg" alt="" /></a></li>
-                                <li><a href="assets/images/product/product-zoom-4.jpg" data-standard="assets/images/product/product-big-4.jpg"><img src="assets/images/product/product-4.jpg" alt="" /></a></li>
-                                <li><a href="assets/images/product/product-zoom-5.jpg" data-standard="assets/images/product/product-big-5.jpg"><img src="assets/images/product/product-5.jpg" alt="" /></a></li>
+                            
+                                
+                            <ul id="pro-thumb-img" class="pro-thumb-img">  
+                                @foreach ($bar->FotoBarang as $data) 
+                                <li><a href="{{ asset('/upload/'.$data->foto) }}" data-standard="{{ asset('/upload/'.$data->foto) }}"><img src="{{ asset('/upload/'.$data->foto) }}" alt="" /></a></li>
+                                @endforeach
                             </ul>
                         </div>
 
@@ -31,28 +53,20 @@
                                 <div class="head">
                                     <div class="head-left">
 
-                                        <h3 class="title">Tmart Baby Dress</h3>
-
-                                        <div class="ratting">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-half-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        </div>
+                                        <h3 class="title">{{$bar->nama_barang}}</h3>
 
                                     </div>
 
                                     <div class="head-right">
-                                        <span class="price">$25</span>
+                                        <span class="price">RP. {{number_format($bar->harga_barang,2,',','.')}}</span>
                                     </div>
                                 </div>
 
-                                <div class="description">
-                                    <p>enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia res eos qui ratione voluptatem sequi Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora inform</p>
-                                </div>
+                               <!--  <div class="description">
+                                    <p>{{$bar->deskripsi}}</p>
+                                </div> -->
 
-                                <span class="availability">Availability: <span>In Stock</span></span>
+                                <span class="availability">Ketersediaan Produk: <span>{{$bar->stock}}</span></span>
 
                                 <div class="quantity-colors">
 
@@ -75,21 +89,18 @@
                                 <div class="actions">
 
                                     <button><i class="ti-shopping-cart"></i><span>ADD TO CART</span></button>
-                                    <button class="box" data-tooltip="Compare"><i class="ti-control-shuffle"></i></button>
                                     <button class="box" data-tooltip="Wishlist"><i class="ti-heart"></i></button>
 
                                 </div>
 
-                                <div class="tags">
-
+                                <!-- <div class="tags">
                                     <h5>Tags:</h5>
                                     <a href="#">Electronic</a>
                                     <a href="#">Smartphone</a>
                                     <a href="#">Phone</a>
                                     <a href="#">Charger</a>
                                     <a href="#">Powerbank</a>
-
-                                </div>
+                                </div> -->
 
                                 <div class="share">
 
@@ -118,7 +129,7 @@
                         <!-- Tab panes -->
                         <div class="tab-content col-12">
                             <div class="pro-info-tab tab-pane active" id="more-info">
-                                <p>Fashion has been creating well-designed collections since 2010. The brand offers feminine designs delivering stylish separates and statement dresses which have since evolved into a full ready-to-wear collection in which every item is a vital part of a woman's wardrobe. The result? Cool, easy, chic looks with youthful elegance and unmistakable signature style. All the beautiful pieces are made in Italy and manufactured with the greatest attention. Now Fashion extends to a range of accessories including shoes, hats, belts and more!</p>
+                                <p>{{$bar->deskripsi}}</p>
                             </div>
                             <div class="pro-info-tab tab-pane" id="data-sheet">
                                 <table class="table-data-sheet">
@@ -396,5 +407,4 @@
             </div>
         </div>
     </div>
-</html>
 @endsection
