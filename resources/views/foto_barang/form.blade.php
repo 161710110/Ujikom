@@ -12,14 +12,14 @@
          <div class="modal-body">
             <span id="form_output"></span>
                <input type="hidden" name="id" id="id">
-            <div class="form-group">
-                        <label for="photo">Foto</label>
-                        <input type="file" id="foto" name="foto[]" class="validate" accept="image/*" multiple>
 
+               <div class="form-group">
+                        <label for="photo">Foto</label>
+                        <input type="file" id="foto" name="foto" accept="image/*">
                         <span class="help-block has-error Photo_error"></span>
                      </div>
 
-            <div class="form-group">
+               <div class="form-group">
                <label>Nama Barang</label>
                <select name="barang_id" id="barang_id" class="single form-control" style="width: 460px">
                   <option disabled selected>Nama Barang</option>
@@ -29,6 +29,7 @@
                </select>
                <span class="help-block has-error nama_barang_error"></span>
             </div>
+
          </div>
          <div class="modal-footer">
             <input type="hidden" name="student_id" id="student_id" value=""/>

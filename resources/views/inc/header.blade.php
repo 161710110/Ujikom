@@ -9,7 +9,7 @@
                     <div class="col mt-10 mb-10 d-none d-md-flex">
                         <!-- Header Top Left Start -->
                         <div class="header-top-left">
-                            <p>Welcome to Jadusona</p>
+                            <p>Yeva Babyshop</p>
                             <p>Hotline: <a href="tel:085659332531">0856-5933-2531</a></p>
                         </div><!-- Header Top Left End -->
                     </div>

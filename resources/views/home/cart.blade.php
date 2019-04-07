@@ -21,7 +21,7 @@
     <div class="page-section section mt-80 mt-lg-60 mt-md-60 mt-sm-60 mt-xs-40 mb-40 mb-lg-20 mb-md-20 mb-sm-20 mb-xs-0">
         <div class="container">
 
-            <form action="{{url('cart/edit/'.Auth::user()->id)}}" method="post" enctype="multipart/form-data">  
+            <form action="{{url('cart/edit/'.Auth::user()->id)}}" method="post" >  
             {{csrf_field()}}             
                 <div class="row">
                     <div class="col-12">
@@ -36,14 +36,14 @@
                                         <th class="pro-subtotal">Total</th>
                                         <th class="pro-remove">Remove</th>
                                     </tr>
-                                         @php
+                                          @php
                                             $total_all = 0;
-                                            $mycart = \App\Keranjang::where('user_id', \Auth::user()->id)->get();
-                                          @endphp
+                                            $mycart = \App\Keranjang::where('users_id', \Auth::user()->id)->get();
+                                        @endphp
 
                                           @foreach($mycart as $data)
                                           @php 
-                                            $t_s = $data->jumlah * $data->Barang->harga;
+                                            $t_s = $data->jumlah * $data->Barang->harga_barang;
                                             $total_all = $total_all + $t_s;
                                           @endphp
 
@@ -51,13 +51,14 @@
                                 <tbody>
                                     <tr>
                                         @foreach ($data->Barang->FotoBarang as $data1)
-                                        <td class="pro-thumbnail"><a href="#"><img src="{{ asset('upload/'.$data1->foto) }}" alt="" /></a></td>
+                                        <td class="pro-thumbnail"><a href="#"><img src="{{ asset($data1->foto) }}" alt="" /></a></td>
                                         @endforeach
-                                        <td class="pro-title"><a href="#">{{$data->Barang->nama_barang}}</a></td>
+                                        <input type="hidden" name="id[]" value="{{$data->id}}">
+                                        <td class="pro-title"><a href="show/{{$data->Barang->slug}}">{{$data->Barang->nama_barang}}</a></td>
                                         <td class="pro-price"><span class="amount">Rp.{{ number_format($data->Barang->harga_barang,2,',','.')}}</span></td>
-                                        <td class="pro-quantity"><div class="pro-qty"><input type="text" value="{{$data->jumlah}}"></div></td>
+                                        <td class="pro-quantity"><div class="pro-qty"><input type="text" value="{{$data->jumlah}}" name="jumlah[]"></div></td>
                                         <td class="pro-subtotal">Rp.{{number_format($data->jumlah * $data->Barang->harga_barang,2,',','.')}}</td>
-                                        <td class="pro-remove"><a href="#">×</a></td>
+                                        <td class="pro-remove"><a href="{{url('cart/delete', $data->id)}}">×</a></td>
                                     </tr>
                                 </tbody>
                                  @endforeach
@@ -66,15 +67,15 @@
                     </div>
                     <div class="col-lg-8 col-md-7 col-12">
                         <div class="cart-buttons mb-30">
-                            <input type="submit" value="Update Cart" />
-                            <a href="#">Continue Shopping</a>
+                            <!-- <input type="submit" value="Update Cart" /> -->
+                            <button type="submit">Update</button>
+                            <a href="{{ url('shop') }}">Continue Shopping</a>
                         </div>
                         <div class="cart-coupon mb-40">
                             <h4>Coupon</h4>
                             <p>Enter your coupon code if you have one.</p>
                              <div class="cuppon-form">
                                 <input type="text" placeholder="Coupon code" />
-                                <input type="submit" value="Apply Coupon" />
                              </div>
                         </div>
                     </div>
@@ -90,13 +91,13 @@
                                     <tr class="order-total">
                                         <th>Total</th>
                                         <td>
-                                            <strong><span class="amount">$306.00</span></strong>
+                                            <strong><span class="amount">Rp.{{number_format($total_all,2,',','.')}}</span></strong>
                                         </td>
                                     </tr>                                           
                                 </tbody>
                             </table>
                             <div class="proceed-to-checkout section mt-30">
-                                <a href="#">Proceed to Checkout</a>
+                                <a href="{{ url('check', Auth::user()->id) }}">Proceed to Checkout</a>
                             </div>
                         </div>
                     </div>

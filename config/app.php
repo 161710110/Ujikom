@@ -163,6 +163,7 @@ return [
         Yajra\DataTables\DataTablesServiceProvider::class,
         Jenssegers\Date\DateServiceProvider::class,
 
+     
 
 
         /*
@@ -230,6 +231,7 @@ return [
         'DataTables' => Yajra\DataTables\DataTables::class,
         'Date' => Jenssegers\Date\Date::class,
 
+       
 
     ],
 

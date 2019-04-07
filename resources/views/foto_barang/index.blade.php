@@ -71,6 +71,7 @@
              $.ajax({
                type: "POST",
                url: "{{url ('/add_f')}}",
+
                // data: $('#sup_form').serialize(),
                data: new FormData(this),
                contentType: false,
@@ -88,7 +89,7 @@
                                 timer: '3500'
                             })
                },
-               error: function (data){
+              error: function (data){
                 $('input').on('keydown keypress keyup click change', function(){
                   $(this).parent().removeClass('has-error');
                   $(this).next('.help-block').hide()
@@ -131,7 +132,7 @@
                 });
                 var coba = new Array();
                 console.log(data.responseJSON.errors);
-                $.each(data.responseJSON.errors,function(name, value){
+                $.each(data.responseJSON.errors,function(name, value){   
                   console.log(name);
                   coba.push(name);
                   $('input[name='+name+']').parent().addClass('has-error');

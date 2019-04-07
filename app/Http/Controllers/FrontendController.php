@@ -12,9 +12,25 @@ use App\Merk;
 use App\FotoBarang;
 use App\Keranjang;
 use App\Pembayaran;
+use Auth;
+use DB;
 
 class FrontendController extends Controller
 {
+    public function home()
+    {
+        $art = Artikel::all();
+        $bar = Barang::all();
+        $con = Contact::all();
+        $fotbar = FotoBarang::All();
+        $katart = KategoriArtikel::all();
+        $katbar = KategoriBarang::all();
+        $cart = Keranjang::all();
+        $merk = Merk::all();
+        $pay = Pembayaran::all();
+        // dd($fotbar);
+        return view('home.index',compact('art','bar','con','fotbar','katart','katbar','cart','merk','pay'));
+    }
      public function index()
     {
         $art = Artikel::all();
@@ -39,10 +55,8 @@ class FrontendController extends Controller
 
     public function sortby()
     {
-        $sort =$_GET['sort'];
-        $finding_tbl = findings::orderBy('id', $sort)->paginate(5);
-        $finding_tbl->setPath('home');
-        return view('home.shop',compact('finding_tbl','sort') );
+        $items = FotoBarang::orderBy('barang.nama_barang')->get(); 
+        return view('fitur.sort',compact('items'));
     }
 
     public function listproduct(KategoriBarang $kategoribarang)
@@ -114,9 +128,9 @@ class FrontendController extends Controller
         return view('home.cart',compact('mycart','art','con')); 
     }
 
-    public function mycart()
+   public function mycart()
     {
-        $mycart = Keranjang::where('user_id',Auth::user()->id)->select('user_id','barang_id',(DB::raw('sum(total_harga) as total_harga')),(DB::raw('sum(jumlah) as jumlah')))
+         $mycart = Keranjang::where('users_id',Auth::user()->id)->select('users_id','barang_id',(DB::raw('sum(total_harga) as total_harga')),(DB::raw('sum(jumlah) as jumlah')))
         ->groupBy(DB::raw('(barang_id)'))
         ->get();
         $con = Contact::all();
@@ -124,6 +138,7 @@ class FrontendController extends Controller
         $cart = Keranjang::all();
         $fotbar = FotoBarang::all();
         
-        return view('home.cart', compact('con','cart','mycart','bar','fotbar'));    
+        return view('home.cart', compact('con','cart','mycart','bar','fotbar'));
     }
+
 }

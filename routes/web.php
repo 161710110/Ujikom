@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home.index');
-});
+Route::get('/','FrontendController@home');
 Route::get('/tes', function () {
     return view('layouts.frontend');
 });
@@ -98,14 +96,14 @@ Route::get('/hehe', function () {
 //Artikel
 Route::get('/blog', 'FrontendController@blog');
 Route::get('/view-blog/{slug}','FrontendController@view1');
-Route::get('/kategori-blog/{slug}','FrontendController@catblog')->name('isikategori');
+Route::get('/kategori-blog/{slug}','FrontendController@catblog')->name('isikategoriblog');
 
 //cart
-Route::get('/cart','FrontendController@cart');
 Route::group(['middleware'=>'auth'],function(){
+    Route::get('/cart','FrontendController@cart');
     Route::get('/add-cart/{barang_id}', function($barang_id){
         // $produk = \App\Product::find($product_id);
-        $exist = \App\Keranjang::where('user_id', \Auth::user()->id)->where('barang_id',$barang_id)->first();
+        $exist = \App\Keranjang::where('users_id', \Auth::user()->id)->where('barang_id',$barang_id)->first();
         if($exist){
             $exist->jumlah = $exist->jumlah + 1;
             $exist->save(); 
@@ -113,13 +111,13 @@ Route::group(['middleware'=>'auth'],function(){
             $data = new \App\Keranjang;
             $data->barang_id = $barang_id;
             $data->jumlah = 1;
-            $data->user_id = \Auth::user()->id;
+            $data->users_id = \Auth::user()->id;
             $data->save();
        
         }
         return redirect()->back();
-    });    
-    Route::get('cart/{user_id}', function ($user_id) {
+    });
+     Route::get('cart/{users_id}', function ($users_id) {
         $mycart = \App\Keranjang::all();
         $contact = \App\Contact::all();
         return view('home.cart', compact('mycart','contact'));
@@ -128,7 +126,7 @@ Route::group(['middleware'=>'auth'],function(){
         $cart = \App\Keranjang::find($id)->delete();
         return redirect()->back();
     });
-    Route::post('cart/edit/{user_id}', function ( \Illuminate\Http\Request $request, $user_id) {
+    Route::post('cart/edit/{users_id}', function ( \Illuminate\Http\Request $request, $user_id) {
         for($i = 0; $i < count($request->id); $i++){
             $cart = \App\Keranjang::find($request->id[$i]);
             $cart->jumlah = $request->jumlah[$i];
@@ -136,41 +134,50 @@ Route::group(['middleware'=>'auth'],function(){
         }
         return redirect()->back();
     });
-    Route::get('check/{user_id}', function($user_id){
-    	$cart = \App\Keranjang::all();
-    	$mycart = \App\Keranjang::all();
-    	$produk = \App\Barang::orderBy('created_at','desc')->paginate(5);
-    	return view('Frontend.checkout',compact('cart','produk','mycart'));
+        
+    Route::get('check/{user_id}', function ($user_id) {
+        $cart = \App\Keranjang::all();
+        $barang = \App\Barang::orderBy('created_at','desc')->paginate(5);
+        $katbar = \App\KategoriBarang::all();
+        $merk = \App\Merk::all();
+        $art = \App\Artikel::all();
+        $fotbar = \App\FotoBarang::all();
+        return view('home.checkout', compact('barang','katbar','merk','art','fotbar','cart'));
     });
+
     Route::post('checkout/{user_id}',function( \Illuminate\Http\Request $request, $user_id){
         $request->validate([
-        	'nama' => 'required|',
-        	'nama_lengkap' => 'required|',
-        	'email' => 'required|',
-        	'no_tlp' => 'required|',
-        	'alamat' => 'required|',
-            'kota_kab' => 'required|',
-            'prov' => 'required|',
-            'kode_pos' => 'required|',
-            'catatan' => 'required|',
-            'bukti_transfer' => 'required|',
-            'barang_id' => 'required|',
+            'nama' => 'required|',
+            'nama_lengkap' => 'required|',
+            'email' => 'required|',
+            'hp' => 'required|',
+            'alamat' => 'required|',
+            'provinsi' => 'required|',
+            'kota' => 'required|',
+            'kodepos' => 'required|',
         ]);
         // dd(json_decode($request->chart));
         foreach(json_decode($request->chart) as $data){
-            $transaksi = new \App\Transaksi;
-            $transaksi->nama = $request->nama;
-            $transaksi->nama_lengkap = $request->nama_lengkap;
-            $transaksi->email = $request->email;
-            $transaksi->no_tlp = $request->no_tlp;
-            $transaksi->pengiriman = $request->pengiriman;
-            $transaksi->jumlah_brg = $data->jumlah_brg;
-            $transaksi->pembayaran = $request->pembayaran;
-            $transaksi->product_id = $data->product_id;
-            $transaksi->user_id = \Auth::user()->id;
-            $transaksi->save();
+            $checkout = new \App\Pembayaran;
+            $checkout->nama = $request->nama;
+            $checkout->nama_lengkap = $request->nama_lengkap;
+            $checkout->email = $request->email;
+            $checkout->hp = $request->hp;
+            $checkout->alamat = $request->alamat;
+            $checkout->provinsi = $request->provinsi;
+            $checkout->kota = $request->kota;
+            $checkout->kodepos = $request->kodepos;
+            $checkout->barang_id = $data->barang_id;
+            $checkout->user_id = \Auth::user()->id;
+            
+            $checkout->save();
         }
-        $del = \App\Keranjang::where('user_id', $user_id)->delete();
+
+        $del = \App\Keranjang::where('users_id', $user_id)->delete();
+
         return redirect()->back();
+        
     });
+
+    Route::get('sort','FrontendController@sort');
 });

@@ -27,12 +27,12 @@
                     <div class="blog-item">
                         <div class="image-wrap">
                             <h4 class="date">{{Date::parse($data->tanggal)->format('M')}}<span>{{Date::parse($data->tanggal)->format('d')}}</span></h4>
-                            <a class="image" href="single-blog.html"><img src="{{ $data->cover }}" style="width: 209px; height: 177px;" alt=""></a>
+                            <a class="image" href="view-blog/{{$data->slug}}"><img src="{{ $data->cover }}" style="width: 209px; height: 177px;" alt=""></a>
                         </div>
                         <div class="content">
                             <h4 class="title"><a href="view-blog/{{$data->slug}}">{{$data->judul}}</a></h4>
                             <div class="desc">
-                                <p>{{$data->isi}}</p>
+                                <p>{!!$data->isi!!}</p>
                             </div>
                             <ul class="meta">
                                 <li><a href="#">{{$data->penulis}}</a></li>

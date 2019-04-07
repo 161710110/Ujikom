@@ -19,8 +19,8 @@ class CreateKeranjangsTable extends Migration
             $table->unsignedInteger('barang_id');
             $table->foreign('barang_id')->references('id')->on('barangs')->onDelete('cascade');
 
-            $table->unsignedInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedInteger('users_id');
+            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->integer('jumlah');
 

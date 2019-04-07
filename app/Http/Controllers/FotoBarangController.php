@@ -25,7 +25,7 @@ class FotoBarangController extends Controller
                 if ($data->foto == NULL){
                     return 'No Image!';
                 }
-                return '<img style="width :175px ; height :150px" src="'. url('upload/'.$data->foto) .'?'.time().'" alt="" class="img-md rounded">';
+                return '<img style="width :175px ; height :150px" src="'. url($data->foto) .'?'.time().'" alt="" class="img-md rounded">';
             })
 
         ->addColumn('action',function($data){
@@ -57,20 +57,25 @@ class FotoBarangController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->hasFile('foto')) {
-            foreach ($request->foto as $foto){
-                $filename = $foto->getClientOriginalName();
-                $destinationPath = public_path() . DIRECTORY_SEPARATOR . 'upload';
-                $foto->move($destinationPath, $filename);
-                $foto_barang = FotoBarang::create($request->except('foto'));
-                $foto_barang->foto = $filename;
-                $foto_barang->save();
+        $this->validate($request, [
+            'foto' => 'required',
+            'barang_id' => 'required'
+        ],[
+            'foto.required' => 'Foto  Tidak Boleh Kosong',
+            'barang_id.required' => 'Barang  Tidak Boleh Kosong'
+        ]);
+        $data = new FotoBarang;
+        $data['foto'] = null;
+            if ($request->hasFile('foto')){
+            $data['foto'] = '/upload/'.str_slug($data['barang_id'], '-').'.'.$request->foto->getClientOriginalExtension();
+            $request->foto->move(public_path('/upload/'), $data['foto']);
             }
-        // return response()->json(['success'=>true]);
-        return redirect()->route('barang.index');
+        $data->barang_id = $request->barang_id;
+        $data->save();
+        return response()->json(['success'=>true]);
 
     }
-}
+
 
     /**
      * Display the specified resource.

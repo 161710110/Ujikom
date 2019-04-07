@@ -58,7 +58,7 @@
                                     <div class="image">
 <!--                                         <a href="{{ url('foto_barang',$data->id)}}"> -->
                                         @foreach($data->FotoBarang as $data1)
-                                        <img src="{{ $data1->foto, $data->nama }}" height="270px" width="320px" alt="">
+                                        <img src="{{ asset('upload/'.$data1->foto) }}" height="270px" width="320px" alt="">
                                         @endforeach
                                         
                                         <div class="image-overlay">

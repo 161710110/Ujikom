@@ -17,7 +17,7 @@
                         <div class="header-shop-links">
 
                             <div class="header-search">
-                                <button class="search-toggle"><img src="{{ asset('frontend/assets/images/icons/search.png') }}" alt="Search Toggle"><img class="toggle-close" src="{{ asset('assets/images/icons/close.png') }}" alt="Search Toggle"></button>
+                                <button class="search-toggle"><img src="{{ asset('frontend/assets/images/icons/search.png') }}" alt="Search Toggle"><img class="toggle-close" src="{{ asset('frontend/assets/images/icons/close.png') }}" alt="Search Toggle"></button>
                                 <div class="header-search-wrap">
                                     <form action="#">
                                         <input type="text" placeholder="Type and hit enter">
@@ -30,9 +30,22 @@
                                 <a href="wishlist.html"><img src="{{ asset('frontend/assets/images/icons/wishlist.png') }}" alt="Wishlist"> <span>0</span></a>
                             </div>
 
+                            @role('member')
                             <div class="header-mini-cart">
-                                <a href="{{ url('/cart') }}"><img src="{{ asset('frontend/assets/images/icons/cart.png') }}" alt="Cart"> <span>0</span></a>
+                                @php
+                                if (\Auth::check()){
+                                $cart = \App\Keranjang::where('users_id',\Auth::user()->id)->get();
+                            }
+                            @endphp
+
+                                <a href="{{ url('/cart',\Auth::user()->id) }}"><img src="{{ asset('frontend/assets/images/icons/cart.png') }}" alt="Cart"> 
+                                <span>
+                                @if(Auth::check() && $cart->count() > 0)
+                                    {{ $cart->count()}}
+                                @endif</span>  
+                                </a>
                             </div>
+                            @endrole
 
                         </div><!-- Header Advance Search End -->
                     </div>

@@ -31,8 +31,8 @@
                             @foreach ($bar->FotoBarang as $data)
                             @if ($loop->first)
                             <div class="pro-large-img mb-10 fix easyzoom easyzoom--overlay easyzoom--with-thumbnails">
-                                <a href="{{ $data->foto }}">
-                                    <img src="{{ asset('/upload/'.$data->foto) }}" alt=""/>
+                                <a href="{{ asset($data->foto) }}">
+                                    <img src="{{ asset($data->foto) }}" alt=""/>
                                 </a> 
                             </div>
                             @endif
@@ -42,7 +42,7 @@
                                 
                             <ul id="pro-thumb-img" class="pro-thumb-img">  
                                 @foreach ($bar->FotoBarang as $data) 
-                                <li><a href="{{ asset('/upload/'.$data->foto) }}" data-standard="{{ asset('/upload/'.$data->foto) }}"><img src="{{ asset('/upload/'.$data->foto) }}" alt="" /></a></li>
+                                <li><a href="{{ asset($data->foto) }}" data-standard="{{ asset($data->foto) }}"><img src="{{ asset($data->foto) }}" alt="" /></a></li>
                                 @endforeach
                             </ul>
                         </div>
@@ -88,7 +88,7 @@
 
                                 <div class="actions">
 
-                                    <button><i class="ti-shopping-cart"></i><span>ADD TO CART</span></button>
+                                    <button><i class="ti-shopping-cart"></i><a href="{{ url('add-cart',$data->Barang->id) }}">Tambah Keranjang</a></button>
                                     <button class="box" data-tooltip="Wishlist"><i class="ti-heart"></i></button>
 
                                 </div>
@@ -129,7 +129,7 @@
                         <!-- Tab panes -->
                         <div class="tab-content col-12">
                             <div class="pro-info-tab tab-pane active" id="more-info">
-                                <p>{{$bar->deskripsi}}</p>
+                                <p>{!!$bar->deskripsi!!}</p>
                             </div>
                             <div class="pro-info-tab tab-pane" id="data-sheet">
                                 <table class="table-data-sheet">

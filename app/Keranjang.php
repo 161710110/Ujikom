@@ -18,9 +18,9 @@ class Keranjang extends Model
 	{
 	    return $this->belongsTo('App\User', 'user_id');
 	}
-	public function pembayaran()
-	{
-	    return $this->hasOne('App\Pembayaran', 'kenranjang_id');
-	}
+	// public function pembayaran()
+	// {
+	//     return $this->hasOne('App\Pembayaran', 'kenranjang_id');
+	// }
 
 }

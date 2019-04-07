@@ -21,8 +21,8 @@
                         <th>Stok</th>
                         <th>Warna</th>
                         <th>Ukuran</th>
-                        <th>Kategori</th>
                         <th>Merk</th>
+                        <th>Kategori</th>
                         <th>Action</th>
                      </tr>
                   </thead>

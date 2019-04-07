@@ -22,4 +22,7 @@ class Barang extends Model
 	{
 	    return $this->hasMany('App\FotoBarang', 'barang_id');
 	}
+	public function pembayaran() {
+        return $this->hasMany('App\Pembayaran', 'barang_id');
+    }
 }

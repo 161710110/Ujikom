@@ -33,4 +33,8 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Keranjang', 'user_id');
     }
+
+    public function checkout() {
+        return $this->hasMany('App\Pembayaran', 'user_id');
+    }
 }

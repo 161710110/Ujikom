@@ -40,7 +40,7 @@
                             <div class="product-short">
                                 <h4>Short by:</h4>
                                 <select class="nice-select">
-                                    <option>A - Z</option>
+                                    <option><a href="sort"> A - Z </a></option>
                                     <option>Z - A</option>
                                     <option>Date Ascending</option>
                                     <option>Date Descending</option>
@@ -56,8 +56,9 @@
                                 <div class="product-inner">
 
                                     <div class="image">
-                                        <!-- <img src="{{ asset('upload/'.$data->foto) }}" height="270px" width="320px" alt=""> -->
-                            <img src="{{ $data->foto, $data->nama }}" height="270px" width="320px" alt="">
+<!--                                         <a href="{{ url('foto_barang',$data->id)}}"> -->
+                                        <img src="{{ asset('upload/'.$data->foto) }}" height="270px" width="320px" alt="">
+                            
                                         <div class="image-overlay">
                                             <div class="action-buttons">
                                                 <button><a href="{{ url('add-cart',$data->Barang->id) }}"><font size="1" color="black">Tambah Keranjang</font></a></button>
