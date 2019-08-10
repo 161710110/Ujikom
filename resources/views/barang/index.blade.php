@@ -17,10 +17,8 @@
                         <th>ID</th>
                         <th>Nama Barang</th>
                         <th>Harga Barang</th>
-                        <th>Deskripsi</th>
+                        <!-- <th>Deskripsi</th> -->
                         <th>Stok</th>
-                        <th>Warna</th>
-                        <th>Ukuran</th>
                         <th>Merk</th>
                         <th>Kategori</th>
                         <th>Action</th>
@@ -47,10 +45,8 @@
             { data: 'id', name: 'id' },
             { data: 'nama_barang', name: 'nama_barang' },
             { data: 'harga_barang', name: 'harga_barang' },
-            { data: 'deskripsi', name: 'deskripsi' },
+            // { data: 'deskripsi', name: 'deskripsi' },
             { data: 'stock', name: 'stock' },
-            { data: 'warna', name: 'warna' },
-            { data: 'ukuran', name: 'ukuran' },
             { data: 'merk', name: 'merk' },
             { data: 'kategori', name: 'kategori' },
             { data: 'action', orderable:false, searchable: false}
@@ -203,10 +199,8 @@
                 $('#id').val(data.id);
                 $('#nama_barang').val(data.nama_barang);
                 $('#harga_barang').val(data.harga_barang);
-                $('#deskripsi').val(data.deskripsi);
+                // $('#deskripsi').val(data.deskripsi);
                 $('#stock').val(data.stock);
-                $('#warna').val(data.warna);
-                $('#ukuran').val(data.ukuran);
                 $('#merk_id').val(data.merk_id);
                 $('#kategori_id').val(data.kategori_id);
                 $('#student_id').val(edit);

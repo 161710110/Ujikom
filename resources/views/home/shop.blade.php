@@ -27,7 +27,7 @@
                 <div class="col-xl-9 col-lg-8 col-12 order-1 order-lg-2 mb-40">
                     <div class="row">
 
-                        <div class="col-12">
+                        <!-- <div class="col-12">
                             <div class="product-show">
                                 <h4>Show:</h4>
                                 <select class="nice-select">
@@ -48,7 +48,7 @@
                                     <option>Price Descending</option>
                                 </select>
                             </div>
-                        </div>
+                        </div> -->
                         @foreach($fotbar as $data) 
                         <div class="col-xl-4 col-md-6 col-12 mb-40">
                            
@@ -71,10 +71,8 @@
                                         <div class="content-left">
                                             <br>
                                             <h4 class="title"><a href="show/{{$data->Barang->slug}}">{{$data->Barang->nama_barang}}</a></h4>
-                                            
-                                            <h5 class="size">Ukuran: <span>S</span><span>M</span><span>L</span><span>XL</span></h5>
-                                            <h5 class="price">Harga: RP. {{number_format($data->Barang->harga_barang,2,',','.')}}</h5>
-                                            <h5 class="color">Warna: <span style="background-color: #ffb2b0"></span><span style="background-color: #0271bc"></span><span style="background-color: #efc87c"></span><span style="background-color: #00c183"></span></h5>
+                                            <h5 class="price"><span>Harga: RP. {{number_format($data->Barang->harga_barang,2,',','.')}}</span></h5>
+                                            <!-- <h5 class="color">Warna: <span style="background-color: #ffb2b0"></span><span style="background-color: #0271bc"></span><span style="background-color: #efc87c"></span><span style="background-color: #00c183"></span></h5> -->
 
                                         </div>
 

@@ -126,7 +126,9 @@
 
                                     <h4 class="title"><a href="show/{{$data->Barang->slug}}">{{$data->Barang->nama_barang}}</a></h4>
 
-                                    <h5 class="size">Harga: RP. {{number_format($data->Barang->harga_barang,2,',','.')}}</h5>
+                                    <h5 class="size">Ukuran: <span>S</span><span>M</span><span>L</span><span>XL</span></h5>
+                                    <h5 class="price">Harga: RP. {{number_format($data->Barang->harga_barang,2,',','.')}}</h5>
+                                    <h5 class="color">Warna: <span style="background-color: #ffb2b0"></span><span style="background-color: #0271bc"></span><span style="background-color: #efc87c"></span><span style="background-color: #00c183"></span></h5>
 
                                 </div>
 
@@ -399,7 +401,7 @@
         <div class="container">
             <div class="feature-wrap row justify-content-between">
 
-               <!--  <div class="col-md-4 col-12 mt-15 mb-15">
+                <div class="col-md-4 col-12 mt-15 mb-15">
                     <div class="feature-item text-center">
 
                         <div class="icon"><img src="{{ asset('frontend/assets/images/feature/feature-1.png') }}"" alt=""></div>
@@ -408,8 +410,8 @@
                             <p>Start from $100</p>
                         </div>
                     </div>
-                </div> -->
-               <!--  <div class="col-md-4 col-12 mt-15 mb-15">
+                </div>
+                <div class="col-md-4 col-12 mt-15 mb-15">
                     <div class="feature-item text-center">
                         <div class="icon"><img src="{{ asset('frontend/assets/images/feature/feature-2.png') }}"" alt=""></div>
                         <div class="content">
@@ -418,9 +420,9 @@
                         </div>
 
                     </div>
-                </div> -->
+                </div>
 
-                <!-- <div class="col-md-4 col-12 mt-15 mb-15">
+                <div class="col-md-4 col-12 mt-15 mb-15">
                     <div class="feature-item text-center">
 
                         <div class="icon"><img src="{{ asset('frontend/assets/images/feature/feature-3.png') }}"" alt=""></div>
@@ -429,7 +431,7 @@
                             <p>Payment Security</p>
                         </div>
                     </div>
-                </div> -->
+                </div>
             </div>
         </div>
     </div><!-- Feature Section End -->
@@ -490,10 +492,12 @@
                                 <div class="content">
                                     <h4 class="title"><a href="single-blog.html">{{$data->judul}}</a></h4>
                                     <div class="desc">
-                                        <p>{!! str_limit($data->isi,100) !!}</p>
+                                        <p>{!!$data->isi!!}</p>
                                     </div>
                                     <ul class="meta">
                                         <li><a href="#">{{$data->penulis}}</a></li>
+                                        <li><a href="#">25 Likes</a></li>
+                                        <li><a href="#">05 Views</a></li>
                                     </ul>
                                 </div>
                             </div>

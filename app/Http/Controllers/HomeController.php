@@ -50,19 +50,19 @@ class HomeController extends Controller
         $cart = Keranjang::all();
         $merk = Merk::all();
         $pay = Pembayaran::all();
-        return view('barang.index',compact('art','bar','con','fotbar','kategori_barang','kat','cart','merk','pay'));
+        return view('home.dash',compact('art','bar','con','fotbar','kategori_barang','kat','cart','merk','pay'));
     }
     protected function memberDashboard()
     {
-        $art = Artikel::all();
+        $art = Artikel::orderBy('created_at','desc')->paginate(3);
         $bar = Barang::all();
         $con = Contact::all();
-        $fotbar = FotoBarang::all();
+        $fotbar = FotoBarang::orderBy('created_at','desc')->paginate(8);
         $katart = KategoriArtikel::all();
         $kategori_barang = KategoriBarang::all();
         $cart = Keranjang::all();
         $merk = Merk::all();
         $pay = Pembayaran::all();
-        return view('layouts.frontend',compact('art','bar','con','fotbar','katart','kategori_barang','cart','merk','pay'));
+        return view('home.member',compact('art','bar','con','fotbar','katart','kategori_barang','cart','merk','pay'));
     }
 }

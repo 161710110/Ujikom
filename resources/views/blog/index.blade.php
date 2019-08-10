@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="page-banner-content col text-center">
 
-                    <h1>Lates and new Trens for baby fashion</h1>
+                    <h1>Temukan artikel terbaru disini</h1>
 
                 </div>
             </div>
@@ -32,12 +32,10 @@
                         <div class="content">
                             <h4 class="title"><a href="view-blog/{{$data->slug}}">{{$data->judul}}</a></h4>
                             <div class="desc">
-                                <p>{!!$data->isi!!}</p>
+                                <p>{!! str_limit($data->isi,75) !!}</p>
                             </div>
                             <ul class="meta">
                                 <li><a href="#">{{$data->penulis}}</a></li>
-                                <li><a href="#">25 Likes</a></li>
-                                <li><a href="#">05 Views</a></li>
                             </ul>
                         </div>
                     </div>

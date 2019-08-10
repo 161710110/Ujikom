@@ -63,8 +63,6 @@ class BarangController extends Controller
             'harga_barang' => 'required',
             'deskripsi' => 'required',
             'stock' => 'required|max:3',
-            'warna' => 'required',
-            'ukuran' => 'required',
             'merk_id' => 'required',
             'kategori_id' => 'required'
         ],[
@@ -73,8 +71,6 @@ class BarangController extends Controller
             'harga_barang.required' => 'Harga Barang  Tidak Boleh Kosong',
             'deskripsi.required' => 'Deskripsi  Tidak Boleh Kosong',
             'stock.required' => 'Stock Tidak Boleh Kosong',
-            'warna.required' => 'Warna Tidak Boleh Kosong',
-            'ukuran.required' => 'Ukuran Tidak Boleh Kosong',
             'stock.max' => 'Stock maksimal 999',
             'merk_id.required' => 'Merk Barang Tidak Boleh Kosong',
             'kategori_id.required' => 'Kategori Barang Tidak Boleh Kosong'
@@ -84,8 +80,6 @@ class BarangController extends Controller
         $data->harga_barang = $request->harga_barang;
         $data->deskripsi = $request->deskripsi;
         $data->stock = $request->stock;
-        $data->warna = $request->warna;
-        $data->ukuran = $request->ukuran;
         $data->merk_id = $request->merk_id;
         $data->kategori_id = $request->kategori_id;
         $data->slug = str_slug($request->nama_barang);
@@ -137,8 +131,6 @@ class BarangController extends Controller
             'harga_barang.required' => 'Harga Barang  Tidak Boleh Kosong',
             'deskripsi.required' => 'Deskripsi  Tidak Boleh Kosong',
             'stock.required' => 'Stock Tidak Boleh Kosong',
-            'warna.required' => 'Warna Tidak Boleh Kosong',
-            'ukuran.required' => 'Ukuran Tidak Boleh Kosong',
             'merk_id.required' => 'Merk Barang Tidak Boleh Kosong',
             'kategori_id.required' => 'Kategori Barang Tidak Boleh Kosong'
         ]);
@@ -147,8 +139,6 @@ class BarangController extends Controller
         $data->harga_barang = $request->harga_barang;
         $data->deskripsi = $request->deskripsi;
         $data->stock = $request->stock;
-        $data->warna = $request->warna;
-        $data->ukuran = $request->ukuran;
         $data->merk_id = $request->merk_id;
         $data->kategori_id = $request->kategori_id;
         $data->slug = str_slug($request->nama_barang);

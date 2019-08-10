@@ -12,17 +12,31 @@ use App\Merk;
 use App\FotoBarang;
 use App\Keranjang;
 use App\Pembayaran;
+use Yajra\Datatables\Html\Builder;
+use Yajra\DataTables\Datatables;
 use Auth;
 use DB;
 
 class FrontendController extends Controller
 {
+    public function json(){
+        $data = Pembayaran::all();
+        return DataTables::of($data)
+        ->addColumn('nama_bar',function($data){
+            return $data->barang['nama_barang'];
+        })
+        ->addColumn('action',function($data){
+                return '<center><a href="#" class="btn btn-xs btn-primary edit" data-id="'.$data->id.'"><i class="glyphicon glyphicon-edit"></i> Edit</a> | <a href="#" class="btn btn-xs btn-danger delete" id="'.$data->id.'"><i class="glyphicon glyphicon-remove"></i> Delete</a></center>';
+        })
+        ->rawColumns(['action','nama_bar'])->make(true);
+    }
+
     public function home()
     {
-        $art = Artikel::all();
+        $art = Artikel::orderBy('created_at','desc')->paginate(3);
         $bar = Barang::all();
         $con = Contact::all();
-        $fotbar = FotoBarang::All();
+        $fotbar = FotoBarang::orderBy('created_at','desc')->paginate(8);
         $katart = KategoriArtikel::all();
         $katbar = KategoriBarang::all();
         $cart = Keranjang::all();
@@ -34,7 +48,7 @@ class FrontendController extends Controller
      public function index()
     {
         $art = Artikel::all();
-        $bar = Barang::all();
+        $bar = Barang::orderBy('created_at','desc')->paginate(30);
         $con = Contact::all();
         $fotbar = FotoBarang::All();
         $katart = KategoriArtikel::all();
@@ -109,7 +123,9 @@ class FrontendController extends Controller
     public function view1($slug)
     {
         $art = Artikel::where('slug', $slug)->first();
-        return view('blog.view',compact('art'));
+        $katart = KategoriArtikel::all();
+        $kategori = KategoriArtikel::whereSlug($slug)->first();
+        return view('blog.view',compact('art','katart','kategori'))->with('kategori',$kategori);
     }
 
     public function catblog($slug)
@@ -140,5 +156,16 @@ class FrontendController extends Controller
         
         return view('home.cart', compact('con','cart','mycart','bar','fotbar'));
     }
+
+    // public function invoicePdf($invoice)
+    // {
+    // //MENGAMBIL DATA TRANSAKSI BERDASARKAN INVOICE
+    // $order = Pembayaran::where('invoice', $invoice)->with('keranjang_id', 'order_detail', 'order_detail.product')->first();
+    // //SET CONFIG PDF MENGGUNAKAN FONT SANS-SERIF
+    // //DENGAN ME-LOAD VIEW INVOICE.BLADE.PHP
+    // $pdf = PDF::setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif'])
+    //     ->loadView('orders.report.invoice', compact('order'));
+    // return $pdf->stream();
+    // }   
 
 }

@@ -70,26 +70,26 @@
 
                                 <div class="quantity-colors">
 
-                                    <div class="quantity">
+                                    <!-- <div class="quantity">
                                         <h5>Quantity:</h5>
                                         <div class="pro-qty"><input type="text" value="1"></div>
-                                    </div>                            
+                                    </div>  -->                           
 
-                                    <div class="colors">
+                                    <!-- <div class="colors">
                                         <h5>Color:</h5>
                                         <div class="color-options">
                                             <button style="background-color: #ff502e"></button>
                                             <button style="background-color: #fff600"></button>
                                             <button style="background-color: #1b2436"></button>
                                         </div>
-                                    </div>                            
+                                    </div>          -->                   
 
                                 </div>
 
                                 <div class="actions">
 
                                     <button><i class="ti-shopping-cart"></i><a href="{{ url('add-cart',$data->Barang->id) }}">Tambah Keranjang</a></button>
-                                    <button class="box" data-tooltip="Wishlist"><i class="ti-heart"></i></button>
+                                   <!--  <button class="box" data-tooltip="Wishlist"><i class="ti-heart"></i></button> -->
 
                                 </div>
 
@@ -102,7 +102,7 @@
                                     <a href="#">Powerbank</a>
                                 </div> -->
 
-                                <div class="share">
+                                <!-- <div class="share">
 
                                     <h5>Share: </h5>
                                     <a href="#"><i class="fa fa-facebook"></i></a>
@@ -110,7 +110,7 @@
                                     <a href="#"><i class="fa fa-instagram"></i></a>
                                     <a href="#"><i class="fa fa-google-plus"></i></a>
 
-                                </div>
+                                </div> -->
 
                             </div>
                         </div>
@@ -122,8 +122,8 @@
                         <div class="col-12">
                             <ul class="pro-info-tab-list section nav">
                                 <li><a class="active" href="#more-info" data-toggle="tab">More info</a></li>
-                                <li><a href="#data-sheet" data-toggle="tab">Data sheet</a></li>
-                                <li><a href="#reviews" data-toggle="tab">Reviews</a></li>
+                                <!-- <li><a href="#data-sheet" data-toggle="tab">Data sheet</a></li>
+                                <li><a href="#reviews" data-toggle="tab">Reviews</a></li> -->
                             </ul>
                         </div>
                         <!-- Tab panes -->
@@ -131,7 +131,7 @@
                             <div class="pro-info-tab tab-pane active" id="more-info">
                                 <p>{!!$bar->deskripsi!!}</p>
                             </div>
-                            <div class="pro-info-tab tab-pane" id="data-sheet">
+                            <!-- <div class="pro-info-tab tab-pane" id="data-sheet">
                                 <table class="table-data-sheet">
                                     <tbody>
                                         <tr class="odd">
@@ -148,14 +148,14 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                            </div>
-                            <div class="pro-info-tab tab-pane" id="reviews">
+                            </div> -->
+                            <!-- <div class="pro-info-tab tab-pane" id="reviews">
                                 <a href="#">Be the first to write your review!</a>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
 
-                    <div class="row">
+                    <!-- <div class="row">
 
                         <div class="section-title text-left col col mb-60 mb-sm-40 mb-xs-30">
                             <h1>Related Product</h1>
@@ -210,197 +210,9 @@
 
                             </div>
 
-                            <div class="col">
-
-                                <div class="product-item">
-                                    <div class="product-inner">
-
-                                        <div class="image">
-                                            <img src="assets/images/product/product-2.jpg" alt="">
-
-                                            <div class="image-overlay">
-                                                <div class="action-buttons">
-                                                    <button>add to cart</button>
-                                                    <button>add to wishlist</button>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="content">
-
-                                            <div class="content-left">
-
-                                                <h4 class="title"><a href="single-product.html">Jumpsuit Outfits</a></h4>
-
-                                                <div class="ratting">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                </div>
-
-                                                <h5 class="size">Size: <span>S</span><span>M</span><span>L</span><span>XL</span></h5>
-                                                <h5 class="color">Color: <span style="background-color: #ffb2b0"></span><span style="background-color: #0271bc"></span><span style="background-color: #efc87c"></span><span style="background-color: #00c183"></span></h5>
-
-                                            </div>
-
-                                            <div class="content-right">
-                                                <span class="price">$09</span>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div class="col">
-
-                                <div class="product-item">
-                                    <div class="product-inner">
-
-                                        <div class="image">
-                                            <img src="assets/images/product/product-3.jpg" alt="">
-
-                                            <div class="image-overlay">
-                                                <div class="action-buttons">
-                                                    <button>add to cart</button>
-                                                    <button>add to wishlist</button>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="content">
-
-                                            <div class="content-left">
-
-                                                <h4 class="title"><a href="single-product.html">Smart Shirt</a></h4>
-
-                                                <div class="ratting">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                </div>
-
-                                                <h5 class="size">Size: <span>S</span><span>M</span><span>L</span><span>XL</span></h5>
-                                                <h5 class="color">Color: <span style="background-color: #ffb2b0"></span><span style="background-color: #0271bc"></span><span style="background-color: #efc87c"></span><span style="background-color: #00c183"></span></h5>
-
-                                            </div>
-
-                                            <div class="content-right">
-                                                <span class="price">$18</span>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div class="col">
-
-                                <div class="product-item">
-                                    <div class="product-inner">
-
-                                        <div class="image">
-                                            <img src="assets/images/product/product-4.jpg" alt="">
-
-                                            <div class="image-overlay">
-                                                <div class="action-buttons">
-                                                    <button>add to cart</button>
-                                                    <button>add to wishlist</button>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="content">
-
-                                            <div class="content-left">
-
-                                                <h4 class="title"><a href="single-product.html">Kids Shoe</a></h4>
-
-                                                <div class="ratting">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star-half-o"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                </div>
-
-                                                <h5 class="size">Size: <span>S</span><span>M</span><span>L</span><span>XL</span></h5>
-                                                <h5 class="color">Color: <span style="background-color: #ffb2b0"></span><span style="background-color: #0271bc"></span><span style="background-color: #efc87c"></span><span style="background-color: #00c183"></span></h5>
-
-                                            </div>
-
-                                            <div class="content-right">
-                                                <span class="price">$15</span>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div class="col">
-
-                                <div class="product-item">
-                                    <div class="product-inner">
-
-                                        <div class="image">
-                                            <img src="assets/images/product/product-5.jpg" alt="">
-
-                                            <div class="image-overlay">
-                                                <div class="action-buttons">
-                                                    <button>add to cart</button>
-                                                    <button>add to wishlist</button>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="content">
-
-                                            <div class="content-left">
-
-                                                <h4 class="title"><a href="single-product.html"> Bowknot Bodysuit</a></h4>
-
-                                                <div class="ratting">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star-half-o"></i>
-                                                </div>
-
-                                                <h5 class="size">Size: <span>S</span><span>M</span><span>L</span><span>XL</span></h5>
-                                                <h5 class="color">Color: <span style="background-color: #ffb2b0"></span><span style="background-color: #0271bc"></span><span style="background-color: #efc87c"></span><span style="background-color: #00c183"></span></h5>
-
-                                            </div>
-
-                                            <div class="content-right">
-                                                <span class="price">$12</span>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                            </div>
-
                         </div>
 
-                    </div>
+                    </div> -->
 
                 </div>
 

@@ -1,4 +1,4 @@
-<!-- Header Bottom Start -->
+<!-- Header Bottom Start  -->
         <div class="header-bottom header-bottom-one header-sticky@">
             <div class="container-fluid">
                 <div class="row menu-center align-items-center justify-content-between">
@@ -7,7 +7,7 @@
                         <!-- Logo Start -->
                         <div class="header-logo">
                             <a href="index.html">
-                                <img src="{{ asset('frontend/assets/images/logo.png') }}" alt="Jadusona">
+                                <img src="">
                             </a>
                         </div><!-- Logo End -->
                     </div>
@@ -16,7 +16,7 @@
                         <!-- Header Advance Search Start -->
                         <div class="header-shop-links">
 
-                            <div class="header-search">
+                          <!--   <div class="header-search">
                                 <button class="search-toggle"><img src="{{ asset('frontend/assets/images/icons/search.png') }}" alt="Search Toggle"><img class="toggle-close" src="{{ asset('frontend/assets/images/icons/close.png') }}" alt="Search Toggle"></button>
                                 <div class="header-search-wrap">
                                     <form action="#">
@@ -24,11 +24,11 @@
                                         <button><img src="{{ asset('frontend/assets/images/icons/search.png') }}" alt="Search"></button>
                                     </form>
                                 </div>
-                            </div>
+                            </div> -->
 
-                            <div class="header-wishlist">
+                            <!-- <div class="header-wishlist">
                                 <a href="wishlist.html"><img src="{{ asset('frontend/assets/images/icons/wishlist.png') }}" alt="Wishlist"> <span>0</span></a>
-                            </div>
+                            </div> -->
 
                             @role('member')
                             <div class="header-mini-cart">
@@ -38,7 +38,7 @@
                             }
                             @endphp
 
-                                <a href="{{ url('/cart',\Auth::user()->id) }}"><img src="{{ asset('frontend/assets/images/icons/cart.png') }}" alt="Cart"> 
+                                <a href="{{ url('/cart') }}"><img src="{{ asset('frontend/assets/images/icons/cart.png') }}" alt="Cart"> 
                                 <span>
                                 @if(Auth::check() && $cart->count() > 0)
                                     {{ $cart->count()}}
@@ -70,4 +70,4 @@
             </div>
         </div><!-- Header BOttom End -->
 
-    </div><!-- Header Section End -->
+    </div><!-- Header Section End

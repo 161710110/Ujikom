@@ -13,19 +13,17 @@
                     <div class="single-blog">
                      <div class="image-wrap">
                             <h4 class="date">{{Date::parse($art->tanggal)->format('M')}}<span>{{Date::parse($art->tanggal)->format('d')}}</span></h4>
-                            <a class="image" href="single-blog.html"><img src="{{$art->cover}}" alt=""></a>
+                            <a class="image" href="{{ $art->cover }}"><img src="{{$art->cover}}" alt=""></a>
                         </div>
                         
                         <div class="content">
                             <ul class="meta">
                                 <li><a href="#">{{$art->penulis}}</a></li>
-                                <li><a href="#">25 Likes</a></li>
-                                <li><a href="#">05 Views</a></li>
                             </ul>
                             <div class="desc">
                                 <p>{!!$art->isi!!}</p>
                             </div>
-                            <div class="blog-footer row mt-45">
+                            <!-- <div class="blog-footer row mt-45">
 
                                 <div class="post-tags col-lg-6 col-12 mv-15">
                                     <h4>Tags:</h4>
@@ -55,12 +53,12 @@
                                     </ul>
                                 </div>
 
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <div class="comment-wrap mt-40">
 
-                        <!-- <h3>3 Comments</h3>
+                       <!--  <h3>3 Comments</h3>
                         <ul class="comment-list">
                             <li>
                                 <div class="single-comment">
@@ -96,7 +94,7 @@
                             </li>
                         </ul> -->
 
-                        <h3>Leave a Comment</h3>
+                       <!--  <h3>Leave a Comment</h3>
                         <div class="comment-form">
                             <form action="#">
                                 <div class="row row-10">
@@ -106,21 +104,23 @@
                                     <div class="col-12"><input value="submit" type="submit"></div>
                                 </div>
                             </form>
-                        </div>
+                        </div> -->
 
                     </div>
                 </div>
 
-                <div class="col-xl-3 col-lg-4 col-12 order-2 order-lg-1 mb-40">
+               <!--  <div class="col-xl-3 col-lg-4 col-12 order-2 order-lg-1 mb-40">
 
                     <div class="sidebar">
-                        <h4 class="sidebar-title">Category</h4>
+                        <h4 class="sidebar-title">Kategori</h4>
                         <ul class="sidebar-list">
-                            <li><a href="#">Shart <span class="num">18</span></a></li>
+                            @foreach($katart as $data)
+                            <li><a href="/view-blog/{{ $data->slug }}">{{$data->nama_kategori}} <span class="num">{{ $data->Artikel->count() }}</span></a></li>
+                            @endforeach
                         </ul>
-                    </div>
+                    </div> -->
 
-                    <div class="sidebar">
+                    <!-- <div class="sidebar">
                         <h4 class="sidebar-title">Archive</h4>
                         <ul class="sidebar-list">
                             <li><a href="#">July 2018</a></li>
@@ -130,9 +130,9 @@
                             <li><a href="#">March 2018</a></li>
                             <li><a href="#">February 2018</a></li>
                         </ul>
-                    </div>
+                    </div> -->
 
-                    <div class="sidebar">
+                    <!-- <div class="sidebar">
                         <h4 class="sidebar-title">Popular Blog</h4>
                         <div class="sidebar-blog-wrap">
                             <div class="sidebar-blog">
@@ -157,9 +157,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
-                    <div class="sidebar">
+                    <!-- <div class="sidebar">
                         <h3 class="sidebar-title">Tags</h3>
                         <ul class="sidebar-tag">
                             <li><a href="#">New</a></li>
@@ -174,13 +174,14 @@
                             <li><a href="#">sit</a></li>
                             <li><a href="#">amet</a></li>
                         </ul>
-                    </div>
+                    </div> -->
 
                 </div>
 
             </div>
         </div>
     </div><!-- Blog Section End -->
+<!-- Blog Section End -->
 
 
 @endsection

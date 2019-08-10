@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Barang extends Model
 {
-    protected $fillable = ['merk_id','kategori_id','nama_barang','harga_barang','deskripsi','stock','warna','ukuran','slug'];
+    protected $fillable = ['merk_id','kategori_id','nama_barang','harga_barang','deskripsi','stock','slug'];
     public $timestamps = true;
 
     public function merk()

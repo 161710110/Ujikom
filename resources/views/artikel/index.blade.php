@@ -17,7 +17,7 @@
                         <th>ID</th>
                         <th>Judul</th>
                         <th>Cover</th>
-                        <th>Isi</th>
+                        <!-- <th>Isi</th> -->
                         <th>Penulis</th>
                         <th>Tanggal</th>
                         <th>Kategori</th>
@@ -44,7 +44,7 @@
             { data: 'id', name: 'id' },
             { data: 'judul', name: 'judul' },
             { data: 'cover', name: 'cover' },
-            { data: 'isi', name: 'isi' },
+            // { data: 'isi', name: 'isi' },
             { data: 'penulis', name: 'penulis' },
             { data: 'tanggal', name: 'tanggal' },
             { data: 'kategori', name: 'kategori' },

@@ -29,12 +29,12 @@
                             <table>
                                 <thead>
                                     <tr>
-                                        <th class="pro-thumbnail">Image</th>
-                                        <th class="pro-title">Product</th>
-                                        <th class="pro-price">Price</th>
-                                        <th class="pro-quantity">Quantity</th>
+                                        <th class="pro-thumbnail">Foto</th>
+                                        <th class="pro-title">Barang</th>
+                                        <th class="pro-price">Harga</th>
+                                        <th class="pro-quantity">Jumlah</th>
                                         <th class="pro-subtotal">Total</th>
-                                        <th class="pro-remove">Remove</th>
+                                        <th class="pro-remove">Hapus</th>
                                     </tr>
                                           @php
                                             $total_all = 0;
@@ -54,9 +54,16 @@
                                         <td class="pro-thumbnail"><a href="#"><img src="{{ asset($data1->foto) }}" alt="" /></a></td>
                                         @endforeach
                                         <input type="hidden" name="id[]" value="{{$data->id}}">
+                                        <input type="hidden" name="barang[]" value="{{ $data->id }}"> 
                                         <td class="pro-title"><a href="show/{{$data->Barang->slug}}">{{$data->Barang->nama_barang}}</a></td>
                                         <td class="pro-price"><span class="amount">Rp.{{ number_format($data->Barang->harga_barang,2,',','.')}}</span></td>
-                                        <td class="pro-quantity"><div class="pro-qty"><input type="text" value="{{$data->jumlah}}" name="jumlah[]"></div></td>
+
+                                        <td class="pro-quantity">
+                                            <div class="pro-qty">
+                                                <input type="number" value="{{$data->jumlah}}" name="jumlah[]" min="1" max="{{ $data->Barang->stock }}">
+                                            </div>
+                                        </td>
+                                        
                                         <td class="pro-subtotal">Rp.{{number_format($data->jumlah * $data->Barang->harga_barang,2,',','.')}}</td>
                                         <td class="pro-remove"><a href="{{url('cart/delete', $data->id)}}">×</a></td>
                                     </tr>
@@ -68,26 +75,22 @@
                     <div class="col-lg-8 col-md-7 col-12">
                         <div class="cart-buttons mb-30">
                             <!-- <input type="submit" value="Update Cart" /> -->
-                            <button type="submit">Update</button>
+                            <input type="submit" value="Update">
                             <a href="{{ url('shop') }}">Continue Shopping</a>
                         </div>
-                        <div class="cart-coupon mb-40">
+                        <!-- <div class="cart-coupon mb-40">
                             <h4>Coupon</h4>
                             <p>Enter your coupon code if you have one.</p>
                              <div class="cuppon-form">
                                 <input type="text" placeholder="Coupon code" />
                              </div>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="col-lg-4 col-md-5 col-12">
                         <div class="cart-total fix mb-40">
-                            <h3>Cart Totals</h3>
+                            <h3>Total Keranjang</h3>
                             <table>
                                 <tbody>
-                                    <tr class="cart-subtotal">
-                                        <th>Subtotal</th>
-                                        <td><span class="amount">$306.00</span></td>
-                                    </tr>
                                     <tr class="order-total">
                                         <th>Total</th>
                                         <td>

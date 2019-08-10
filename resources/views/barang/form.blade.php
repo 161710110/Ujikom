@@ -17,38 +17,26 @@
 
                     <div class="form-group">
                         <label>Nama Barang</label>
-                        <input type="text" name="nama_barang" id="nama_barang" class="form-control" placeholder="Barang" minlength="1" maxlength="23" />
+                        <input type="text" name="nama_barang" id="nama_barang" class="form-control" placeholder="Nama Barang" minlength="1" maxlength="999" />
                         <span class="help-block has-error nama_barang_error"></span>
                       </div>
 
                       <div class="form-group">
                         <label>Harga Barang</label>
-                        <input type="number" name="harga_barang" id="harga_barang" class="form-control" placeholder="" />
+                        <input type="number" name="harga_barang" id="harga_barang" class="form-control" placeholder="Harga Barang" />
                         <span class="help-block has-error harga_barang_error"></span>
                       </div>
 
                       <div class="form-group">
                         <label>Deskripsi</label>
-                        <input type="text" name="deskripsi" id="deskripsi" class="form-control" placeholder=""/>
+                        <textarea name="deskripsi" id="isi" class="form-control" placeholder="Deskripsi"></textarea>
                         <span class="help-block has-error deskripsi_error"></span>
                       </div>
 
                       <div class="form-group">
                         <label>Stok</label>
-                        <input type="number" name="stock" id="stock" class="form-control" placeholder="" min="1" maxlength="3" />
+                        <input type="number" name="stock" id="stock" class="form-control" placeholder="Stok" min="1" maxlength="3" />
                         <span class="help-block has-error stock_error"></span>
-                      </div>
-
-                      <div class="form-group">
-                        <label>Warna</label>
-                        <input type="text" name="warna" id="warna" class="form-control" placeholder="" min="1" maxlength="25" />
-                        <span class="help-block has-error warna_error"></span>
-                      </div>
-
-                      <div class="form-group">
-                        <label>Ukuran</label>
-                        <input type="text" name="ukuran" id="ukuran" class="form-control" placeholder="" min="1" maxlength="25" />
-                        <span class="help-block has-error ukuran_error"></span>
                       </div>
 
                      <div class="form-group">

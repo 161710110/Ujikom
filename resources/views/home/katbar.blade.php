@@ -10,8 +10,8 @@
 
                     <h1>Shop</h1>
                     <ul class="page-breadcrumb">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="shop-left-sidebar.html">Shop</a></li>
+                        <li><a href="{{ url('/') }}">Home</a></li>
+                        <li><a href="{{ url('/shop') }}">Shop</a></li>
                     </ul>
 
                 </div>
@@ -28,7 +28,7 @@
                     <div class="row">
 
                         <div class="col-12">
-                            <div class="product-show">
+                            <!-- <div class="product-show">
                                 <h4>Show:</h4>
                                 <select class="nice-select">
                                     <option>8</option>
@@ -36,8 +36,8 @@
                                     <option>16</option>
                                     <option>20</option>
                                 </select>
-                            </div>
-                            <div class="product-short">
+                            </div> -->
+                            <!-- <div class="product-short">
                                 <h4>Short by:</h4>
                                 <select class="nice-select">
                                     <option>Name Ascending</option>
@@ -47,7 +47,7 @@
                                     <option>Price Ascending</option>
                                     <option>Price Descending</option>
                                 </select>
-                            </div>
+                            </div> -->
                         </div>
                         @foreach($kategori->barang()->get() as $data) 
                         <div class="col-xl-4 col-md-6 col-12 mb-40">
@@ -56,9 +56,8 @@
                                 <div class="product-inner">
 
                                     <div class="image">
-<!--                                         <a href="{{ url('foto_barang',$data->id)}}"> -->
                                         @foreach($data->FotoBarang as $data1)
-                                        <img src="{{ asset('upload/'.$data1->foto) }}" height="270px" width="320px" alt="">
+                                        <img src="{{ $data1->foto, $data1->nama }}" height="270px" width="320px" alt="">
                                         @endforeach
                                         
                                         <div class="image-overlay">
@@ -73,11 +72,9 @@
 
                                         <div class="content-left">
                                             <br>
-                                            <h4 class="title"><a href="single-product.html">{{$data->nama_barang}}</a></h4>
+                                            <h4 class="title"><a href="{{ url('show', $data->slug) }}">{{$data->nama_barang}}</a></h4>
                                             
-                                            <h5 class="size">Size: <span>S</span><span>M</span><span>L</span><span>XL</span></h5>
-                                            <h5 class="price">Price: RP. {{number_format($data->harga_barang,2,',','.')}}</h5>
-                                            <h5 class="color">Color: <span style="background-color: #ffb2b0"></span><span style="background-color: #0271bc"></span><span style="background-color: #efc87c"></span><span style="background-color: #00c183"></span></h5>
+                                            <h5 class="size">Price: RP. {{number_format($data->harga_barang,2,',','.')}}</h5>
 
                                         </div>
 
@@ -111,7 +108,7 @@
                 <div class="col-xl-3 col-lg-4 col-12 order-2 order-lg-1 mb-40">
 
                     <div class="sidebar">
-                        <h4 class="sidebar-title">Category</h4>
+                        <h4 class="sidebar-title">Kategori</h4>
                          <ul class="sidebar-list">
                             @foreach ($katbar as $data)<li><a href="{{ route('isikategori', $data->slug) }}">{{$data->nama_kategori}} <span class="num">{{ $data->Barang->count() }}</span></a></li>@endforeach
                         </ul>

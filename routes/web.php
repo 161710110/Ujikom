@@ -72,12 +72,15 @@ Route::group(['prefix'=>'/','middleware'=>['auth','role:admin']], function(){
 	Route::post('f/edit/{id}', 'FotoBarangController@update');
 
 	//Barang
-	Route::resource('barang', 'BarangController');
+    Route::resource('barang', 'BarangController');
 	Route::get('g', 'BarangController@json');
 	Route::get('del_g', 'BarangController@destroy')->name('del_g');
 	Route::post('add_g', 'BarangController@store');
 	Route::get('editg/{id}', 'BarangController@edit');
 	Route::post('g/edit/{id}', 'BarangController@update');
+    
+    //checkout
+    Route::get('h', 'FrontendController@json');
 });
 
 // Route::get('/', 'FrontendController@index');
@@ -117,7 +120,7 @@ Route::group(['middleware'=>'auth'],function(){
         }
         return redirect()->back();
     });
-     Route::get('cart/{users_id}', function ($users_id) {
+     Route::get('cart', function () {
         $mycart = \App\Keranjang::all();
         $contact = \App\Contact::all();
         return view('home.cart', compact('mycart','contact'));
@@ -170,12 +173,15 @@ Route::group(['middleware'=>'auth'],function(){
             $checkout->barang_id = $data->barang_id;
             $checkout->user_id = \Auth::user()->id;
             
+            // $barang = \App\Barang::find($barang_id);
+            // $barang->stock = $barang->stock - $quantity;
+            // $barang->save();
             $checkout->save();
         }
 
         $del = \App\Keranjang::where('users_id', $user_id)->delete();
 
-        return redirect()->back();
+        return view('home.terimakasih');
         
     });
 
